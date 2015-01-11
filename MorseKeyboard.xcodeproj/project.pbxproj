@@ -13,6 +13,8 @@
 		8232C9A11A6285FA00D48351 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8232C9A01A6285FA00D48351 /* Images.xcassets */; };
 		8232C9A41A6285FA00D48351 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8232C9A21A6285FA00D48351 /* LaunchScreen.xib */; };
 		8232C9B01A6285FA00D48351 /* MorseKeyboardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8232C9AF1A6285FA00D48351 /* MorseKeyboardTests.swift */; };
+		8232C9C21A628A3100D48351 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8232C9C11A628A3100D48351 /* KeyboardViewController.swift */; };
+		8232C9C51A628A3100D48351 /* Keyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 8232C9BD1A628A3000D48351 /* Keyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -23,7 +25,28 @@
 			remoteGlobalIDString = 8232C9931A6285FA00D48351;
 			remoteInfo = MorseKeyboard;
 		};
+		8232C9C31A628A3100D48351 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8232C98C1A6285FA00D48351 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8232C9BC1A628A3000D48351;
+			remoteInfo = Keyboard;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8232C9C91A628A3100D48351 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				8232C9C51A628A3100D48351 /* Keyboard.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		8232C9941A6285FA00D48351 /* MorseKeyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MorseKeyboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -36,6 +59,9 @@
 		8232C9A91A6285FA00D48351 /* MorseKeyboardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MorseKeyboardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8232C9AE1A6285FA00D48351 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8232C9AF1A6285FA00D48351 /* MorseKeyboardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MorseKeyboardTests.swift; sourceTree = "<group>"; };
+		8232C9BD1A628A3000D48351 /* Keyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Keyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		8232C9C01A628A3100D48351 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8232C9C11A628A3100D48351 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +79,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8232C9BA1A628A3000D48351 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -61,6 +94,7 @@
 			children = (
 				8232C9961A6285FA00D48351 /* MorseKeyboard */,
 				8232C9AC1A6285FA00D48351 /* MorseKeyboardTests */,
+				8232C9BE1A628A3100D48351 /* Keyboard */,
 				8232C9951A6285FA00D48351 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -70,6 +104,7 @@
 			children = (
 				8232C9941A6285FA00D48351 /* MorseKeyboard.app */,
 				8232C9A91A6285FA00D48351 /* MorseKeyboardTests.xctest */,
+				8232C9BD1A628A3000D48351 /* Keyboard.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -112,6 +147,23 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		8232C9BE1A628A3100D48351 /* Keyboard */ = {
+			isa = PBXGroup;
+			children = (
+				8232C9C11A628A3100D48351 /* KeyboardViewController.swift */,
+				8232C9BF1A628A3100D48351 /* Supporting Files */,
+			);
+			path = Keyboard;
+			sourceTree = "<group>";
+		};
+		8232C9BF1A628A3100D48351 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8232C9C01A628A3100D48351 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -122,10 +174,12 @@
 				8232C9901A6285FA00D48351 /* Sources */,
 				8232C9911A6285FA00D48351 /* Frameworks */,
 				8232C9921A6285FA00D48351 /* Resources */,
+				8232C9C91A628A3100D48351 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				8232C9C41A628A3100D48351 /* PBXTargetDependency */,
 			);
 			name = MorseKeyboard;
 			productName = MorseKeyboard;
@@ -150,6 +204,23 @@
 			productReference = 8232C9A91A6285FA00D48351 /* MorseKeyboardTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		8232C9BC1A628A3000D48351 /* Keyboard */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8232C9C61A628A3100D48351 /* Build configuration list for PBXNativeTarget "Keyboard" */;
+			buildPhases = (
+				8232C9B91A628A3000D48351 /* Sources */,
+				8232C9BA1A628A3000D48351 /* Frameworks */,
+				8232C9BB1A628A3000D48351 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Keyboard;
+			productName = Keyboard;
+			productReference = 8232C9BD1A628A3000D48351 /* Keyboard.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -165,6 +236,9 @@
 					8232C9A81A6285FA00D48351 = {
 						CreatedOnToolsVersion = 6.1.1;
 						TestTargetID = 8232C9931A6285FA00D48351;
+					};
+					8232C9BC1A628A3000D48351 = {
+						CreatedOnToolsVersion = 6.1.1;
 					};
 				};
 			};
@@ -183,6 +257,7 @@
 			targets = (
 				8232C9931A6285FA00D48351 /* MorseKeyboard */,
 				8232C9A81A6285FA00D48351 /* MorseKeyboardTests */,
+				8232C9BC1A628A3000D48351 /* Keyboard */,
 			);
 		};
 /* End PBXProject section */
@@ -199,6 +274,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		8232C9A71A6285FA00D48351 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8232C9BB1A628A3000D48351 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -225,6 +307,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8232C9B91A628A3000D48351 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8232C9C21A628A3100D48351 /* KeyboardViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -232,6 +322,11 @@
 			isa = PBXTargetDependency;
 			target = 8232C9931A6285FA00D48351 /* MorseKeyboard */;
 			targetProxy = 8232C9AA1A6285FA00D48351 /* PBXContainerItemProxy */;
+		};
+		8232C9C41A628A3100D48351 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8232C9BC1A628A3000D48351 /* Keyboard */;
+			targetProxy = 8232C9C31A628A3100D48351 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -338,6 +433,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = MorseKeyboard/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -348,6 +444,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = MorseKeyboard/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -388,6 +485,32 @@
 			};
 			name = Release;
 		};
+		8232C9C71A628A3100D48351 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = Keyboard/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		8232C9C81A628A3100D48351 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = Keyboard/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -413,6 +536,14 @@
 			buildConfigurations = (
 				8232C9B71A6285FA00D48351 /* Debug */,
 				8232C9B81A6285FA00D48351 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		8232C9C61A628A3100D48351 /* Build configuration list for PBXNativeTarget "Keyboard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8232C9C71A628A3100D48351 /* Debug */,
+				8232C9C81A628A3100D48351 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
