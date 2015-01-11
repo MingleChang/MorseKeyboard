@@ -52,6 +52,25 @@ class KeyboardViewController: UIInputViewController {
         }
         self.nextKeyboardButton.setTitleColor(textColor, forState: .Normal)
     }
+    // MARK: Button Click -- 按钮点击事件
+    func okButtonClick(sender:UIButton){
+        
+    }
+    func hideButtonClick(sender:UIButton){
+        self.dismissKeyboard()
+    }
+    func shiftButtonClick(sender:UIButton){
+        
+    }
+    func deleteButtonClick(sender:UIButton){
+        
+    }
+    func spaceButtonClick(sender:UIButton){
+        
+    }
+    func nextButtonClick(sender:UIButton){
+        self.advanceToNextInputMode()
+    }
     // MARK: Init All SubViews -- 初始化视图
     func initAllSubViews(){
         if(UIDevice.currentDevice().userInterfaceIdiom==UIUserInterfaceIdiom.Phone){
@@ -63,13 +82,10 @@ class KeyboardViewController: UIInputViewController {
     
     func initiPhoneSubView(){
         self.nextKeyboardButton = UIButton.buttonWithType(.System) as UIButton
-        
         self.nextKeyboardButton.setTitle(NSLocalizedString("Next Keyboard", comment: "Title for 'Next Keyboard' button"), forState: .Normal)
         self.nextKeyboardButton.sizeToFit()
         self.nextKeyboardButton.setTranslatesAutoresizingMaskIntoConstraints(false)
-        
-        self.nextKeyboardButton.addTarget(self, action: "advanceToNextInputMode", forControlEvents: .TouchUpInside)
-        
+        self.nextKeyboardButton.addTarget(self, action: "nextButtonClick:", forControlEvents: .TouchUpInside)
         self.view.addSubview(self.nextKeyboardButton)
         
         var nextKeyboardButtonLeftSideConstraint = NSLayoutConstraint(item: self.nextKeyboardButton, attribute: .Left, relatedBy: .Equal, toItem: self.view, attribute: .Left, multiplier: 1.0, constant: 0.0)
@@ -80,7 +96,7 @@ class KeyboardViewController: UIInputViewController {
         //大小写切换键盘按钮
         self.shiftKeyboardButton = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
         self.shiftKeyboardButton.setTranslatesAutoresizingMaskIntoConstraints(false)
-//        self.shiftKeyboardButton.addTarget(self, action: "advanceToNextInputMode", forControlEvents:UIControlEvents.TouchUpInside)
+        self.shiftKeyboardButton.addTarget(self, action: "shiftButtonClick:", forControlEvents:UIControlEvents.TouchUpInside)
         self.shiftKeyboardButton.backgroundColor=UIColor.redColor()
         self.view .addSubview(self.shiftKeyboardButton)
         
@@ -95,7 +111,7 @@ class KeyboardViewController: UIInputViewController {
         //切换键盘按钮
         self.nextKeyboardButton = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
         self.nextKeyboardButton.setTranslatesAutoresizingMaskIntoConstraints(false)
-        self.nextKeyboardButton.addTarget(self, action: "advanceToNextInputMode", forControlEvents:UIControlEvents.TouchUpInside)
+        self.nextKeyboardButton.addTarget(self, action: "nextButtonClick:", forControlEvents:UIControlEvents.TouchUpInside)
         self.nextKeyboardButton.backgroundColor=UIColor.blueColor()
         self.view .addSubview(self.nextKeyboardButton)
         
@@ -111,6 +127,7 @@ class KeyboardViewController: UIInputViewController {
         self.deleteKeyboardButton = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
         self.deleteKeyboardButton.setTranslatesAutoresizingMaskIntoConstraints(false)
         self.deleteKeyboardButton.backgroundColor=UIColor.brownColor()
+        self.deleteKeyboardButton.addTarget(self, action: "deleteButtonClick:", forControlEvents:UIControlEvents.TouchUpInside)
         self.view .addSubview(self.deleteKeyboardButton)
         
         var deleteKeyboardButtonWidthConstraint = NSLayoutConstraint(item: self.deleteKeyboardButton, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: 100.0)
@@ -126,6 +143,7 @@ class KeyboardViewController: UIInputViewController {
         self.okKeyboardButton.setTitle("OK", forState: UIControlState.Normal)
         self.okKeyboardButton.setTranslatesAutoresizingMaskIntoConstraints(false)
         self.okKeyboardButton.backgroundColor=UIColor.greenColor()
+        self.okKeyboardButton.addTarget(self, action: "okButtonClick:", forControlEvents:UIControlEvents.TouchUpInside)
         self.view .addSubview(self.okKeyboardButton)
         
         var okKeyboardButtonWidthConstraint = NSLayoutConstraint(item: self.okKeyboardButton, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: 100.0)
@@ -140,6 +158,7 @@ class KeyboardViewController: UIInputViewController {
         self.hideKeyboardButton = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
         self.hideKeyboardButton.setTranslatesAutoresizingMaskIntoConstraints(false)
         self.hideKeyboardButton.backgroundColor=UIColor.greenColor()
+        self.hideKeyboardButton.addTarget(self, action: "hideButtonClick:", forControlEvents:UIControlEvents.TouchUpInside)
         self.view .addSubview(self.hideKeyboardButton)
         
         var hideKeyboardButtonWidthConstraint = NSLayoutConstraint(item: self.hideKeyboardButton, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: 50.0)
@@ -154,6 +173,7 @@ class KeyboardViewController: UIInputViewController {
         self.spaceKeyboardButton=UIButton.buttonWithType(UIButtonType.Custom) as UIButton
         self.spaceKeyboardButton.setTranslatesAutoresizingMaskIntoConstraints(false)
         self.spaceKeyboardButton.backgroundColor=UIColor.whiteColor()
+        self.spaceKeyboardButton.addTarget(self, action: "spaceButtonClick:", forControlEvents:UIControlEvents.TouchUpInside)
         self.view .addSubview(self.spaceKeyboardButton)
         
         var spaceKeyboardButtonHeightConstraint = NSLayoutConstraint(item: self.spaceKeyboardButton, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: 50.0)
