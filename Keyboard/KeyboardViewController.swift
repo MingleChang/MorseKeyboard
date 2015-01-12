@@ -9,6 +9,8 @@
 import UIKit
 
 class KeyboardViewController: UIInputViewController {
+    let CELL_ID="CellID"
+    let AllMorseDic=NSDictionary(contentsOfFile:NSBundle.mainBundle().pathForResource("MorseToChar.plist", ofType: nil)!)
 
     @IBOutlet var nextKeyboardButton: UIButton!
     @IBOutlet var okKeyboardButton: UIButton!
@@ -16,12 +18,16 @@ class KeyboardViewController: UIInputViewController {
     @IBOutlet var hideKeyboardButton: UIButton!
     @IBOutlet var deleteKeyboardButton: UIButton!
     @IBOutlet var shiftKeyboardButton: UIButton!
-    @IBOutlet var showResultCollectionView: UICollectionView!
+    @IBOutlet var showResultLabel: UILabel!
+    @IBOutlet var morseLabel: UILabel!
+    
+    var allInfo:NSArray!
     
     override func updateViewConstraints() {
         super.updateViewConstraints()
     
         // Add custom view sizing constraints here
+//        self.resetViewConstraints()
     }
 
     override func viewDidLoad() {
@@ -50,11 +56,56 @@ class KeyboardViewController: UIInputViewController {
         } else {
             textColor = UIColor.blackColor()
         }
-        self.nextKeyboardButton.setTitleColor(textColor, forState: .Normal)
+    }
+    
+    //MARK: 
+    func cleanAllLabel(){
+        self.morseLabel.text=""
+        self.showResultLabel.text=""
+    }
+    func checkMorseLabelTextEmpty()->Bool{
+        if(self.morseLabel.text == nil){
+            return true
+        }else if(self.morseLabel.text!.isEmpty){
+            return true
+        }else{
+            return false
+        }
+    }
+    func checkShowResultLabelTextEmpty()->Bool{
+        if(self.showResultLabel.text == nil){
+            return true
+        }else if(self.showResultLabel.text!.isEmpty){
+            return true
+        }else{
+            return false
+        }
+    }
+    
+    func setShowLabelText(){
+        if(self.checkMorseLabelTextEmpty()){
+            self.showResultLabel.text=""
+            return
+        }
+        var lString=""
+        var lAllMorse=self.morseLabel.text!.componentsSeparatedByString("/")
+        var lAllMorseKey=self.AllMorseDic!.allKeys as NSArray
+        for morse in lAllMorse{
+            if(lAllMorseKey.containsObject(morse)){
+                lString=lString.stringByAppendingString(self.AllMorseDic!.objectForKey(morse) as NSString)
+            }else{
+                break
+            }
+        }
+        self.showResultLabel.text=lString
     }
     // MARK: Button Click -- 按钮点击事件
     func okButtonClick(sender:UIButton){
-        
+        if(!(self.checkMorseLabelTextEmpty()||self.checkShowResultLabelTextEmpty())){
+            var proxy=self.textDocumentProxy as UITextDocumentProxy
+            proxy.insertText(self.showResultLabel.text!)
+            self.cleanAllLabel()
+        }
     }
     func hideButtonClick(sender:UIButton){
         self.dismissKeyboard()
@@ -63,50 +114,75 @@ class KeyboardViewController: UIInputViewController {
         
     }
     func deleteButtonClick(sender:UIButton){
-        
+        if(self.checkMorseLabelTextEmpty()){
+            var proxy=self.textDocumentProxy as UITextDocumentProxy
+            proxy.deleteBackward()
+        }else{
+            var lText=self.morseLabel.text! as NSString
+            lText=lText.substringToIndex(lText.length-1)
+            self.morseLabel.text=lText
+            self.setShowLabelText()
+        }
     }
     func spaceButtonClick(sender:UIButton){
-        
+        if(self.checkMorseLabelTextEmpty()){
+            var proxy=self.textDocumentProxy as UITextDocumentProxy
+            proxy.insertText(" ")
+        }else{
+            self.morseLabel.text=self.morseLabel.text?.stringByAppendingString("/")
+        }
     }
     func nextButtonClick(sender:UIButton){
         self.advanceToNextInputMode()
     }
+    func tapGestureRecognizerEvent(sender:UITapGestureRecognizer){
+        if(self.checkMorseLabelTextEmpty()){
+            self.morseLabel.text="·"
+        }else{
+            self.morseLabel.text=self.morseLabel.text?.stringByAppendingString("·")
+        }
+        self.setShowLabelText()
+    }
+    func longPressGestureRecognizerEvent(sender:UILongPressGestureRecognizer){
+        if(sender.state==UIGestureRecognizerState.Began){
+            if(self.checkMorseLabelTextEmpty()){
+                self.morseLabel.text="-"
+            }else{
+                self.morseLabel.text=self.morseLabel.text?.stringByAppendingString("-")
+            }
+        }
+        self.setShowLabelText()
+    }
+    
     // MARK: Init All SubViews -- 初始化视图
+    func initAllData(){
+        self.allInfo=NSArray()
+    }
     func initAllSubViews(){
         if(UIDevice.currentDevice().userInterfaceIdiom==UIUserInterfaceIdiom.Phone){
             self.initiPhoneSubView()
+            self.resetiPhoneViewConstraints()
         }else{
             self.initiPadSubView()
+            self.resetiPadViewConstraints()
+        }
+    }
+    
+    func resetViewConstraints(){
+        if(UIDevice.currentDevice().userInterfaceIdiom==UIUserInterfaceIdiom.Phone){
+            self.resetiPhoneViewConstraints()
+        }else{
+            self.resetiPadViewConstraints()
         }
     }
     
     func initiPhoneSubView(){
-        self.nextKeyboardButton = UIButton.buttonWithType(.System) as UIButton
-        self.nextKeyboardButton.setTitle(NSLocalizedString("Next Keyboard", comment: "Title for 'Next Keyboard' button"), forState: .Normal)
-        self.nextKeyboardButton.sizeToFit()
-        self.nextKeyboardButton.setTranslatesAutoresizingMaskIntoConstraints(false)
-        self.nextKeyboardButton.addTarget(self, action: "nextButtonClick:", forControlEvents: .TouchUpInside)
-        self.view.addSubview(self.nextKeyboardButton)
-        
-        var nextKeyboardButtonLeftSideConstraint = NSLayoutConstraint(item: self.nextKeyboardButton, attribute: .Left, relatedBy: .Equal, toItem: self.view, attribute: .Left, multiplier: 1.0, constant: 0.0)
-        var nextKeyboardButtonBottomConstraint = NSLayoutConstraint(item: self.nextKeyboardButton, attribute: .Bottom, relatedBy: .Equal, toItem: self.view, attribute: .Bottom, multiplier: 1.0, constant: 0.0)
-        self.view.addConstraints([nextKeyboardButtonLeftSideConstraint, nextKeyboardButtonBottomConstraint])
-    }
-    func initiPadSubView(){
         //大小写切换键盘按钮
-        self.shiftKeyboardButton = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
+        self.shiftKeyboardButton=UIButton.buttonWithType(UIButtonType.Custom) as UIButton
         self.shiftKeyboardButton.setTranslatesAutoresizingMaskIntoConstraints(false)
         self.shiftKeyboardButton.addTarget(self, action: "shiftButtonClick:", forControlEvents:UIControlEvents.TouchUpInside)
         self.shiftKeyboardButton.backgroundColor=UIColor.redColor()
         self.view .addSubview(self.shiftKeyboardButton)
-        
-        var shiftKeyboardButtonWidthConstraint = NSLayoutConstraint(item: self.shiftKeyboardButton, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: 50.0)
-        var shiftKeyboardButtonHeightConstraint = NSLayoutConstraint(item: self.shiftKeyboardButton, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: 50.0)
-        self.shiftKeyboardButton .addConstraints([shiftKeyboardButtonWidthConstraint, shiftKeyboardButtonHeightConstraint])
-        
-        var shiftKeyboardButtonLeftConstraint = NSLayoutConstraint(item: self.shiftKeyboardButton, attribute: .Left, relatedBy: .Equal, toItem: self.view, attribute: .Left, multiplier: 1.0, constant: 5.0)
-        var shiftKeyboardButtonBottomConstraint = NSLayoutConstraint(item: self.shiftKeyboardButton, attribute: .Bottom, relatedBy: .Equal, toItem: self.view, attribute: .Bottom, multiplier: 1.0, constant: -5.0)
-        self.view.addConstraints([shiftKeyboardButtonLeftConstraint, shiftKeyboardButtonBottomConstraint])
         
         //切换键盘按钮
         self.nextKeyboardButton = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
@@ -115,28 +191,12 @@ class KeyboardViewController: UIInputViewController {
         self.nextKeyboardButton.backgroundColor=UIColor.blueColor()
         self.view .addSubview(self.nextKeyboardButton)
         
-        var nextKeyboardButtonWidthConstraint = NSLayoutConstraint(item: self.nextKeyboardButton, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: 50.0)
-        var nextKeyboardButtonHeightConstraint = NSLayoutConstraint(item: self.nextKeyboardButton, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: 50.0)
-        self.nextKeyboardButton .addConstraints([nextKeyboardButtonWidthConstraint, nextKeyboardButtonHeightConstraint])
-        
-        var nextKeyboardButtonLeftConstraint = NSLayoutConstraint(item: self.nextKeyboardButton, attribute: .Left, relatedBy: .Equal, toItem: self.shiftKeyboardButton, attribute:NSLayoutAttribute.Right, multiplier: 1.0, constant: 10.0)
-        var nextKeyboardButtonBottomConstraint = NSLayoutConstraint(item: self.nextKeyboardButton, attribute: .Bottom, relatedBy: .Equal, toItem: self.view, attribute: .Bottom, multiplier: 1.0, constant: -5.0)
-        self.view.addConstraints([nextKeyboardButtonLeftConstraint, nextKeyboardButtonBottomConstraint])
-        
         //删除键盘按钮
         self.deleteKeyboardButton = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
         self.deleteKeyboardButton.setTranslatesAutoresizingMaskIntoConstraints(false)
         self.deleteKeyboardButton.backgroundColor=UIColor.brownColor()
         self.deleteKeyboardButton.addTarget(self, action: "deleteButtonClick:", forControlEvents:UIControlEvents.TouchUpInside)
         self.view .addSubview(self.deleteKeyboardButton)
-        
-        var deleteKeyboardButtonWidthConstraint = NSLayoutConstraint(item: self.deleteKeyboardButton, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: 100.0)
-        var deleteKeyboardButtonHeightConstraint = NSLayoutConstraint(item: self.deleteKeyboardButton, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: 50.0)
-        self.deleteKeyboardButton .addConstraints([deleteKeyboardButtonWidthConstraint, deleteKeyboardButtonHeightConstraint])
-        
-        var deleteKeyboardButtonTopConstraint = NSLayoutConstraint(item: self.deleteKeyboardButton, attribute: NSLayoutAttribute.Top, relatedBy: .Equal, toItem: self.view, attribute:NSLayoutAttribute.Top, multiplier: 1.0, constant: 5.0)
-        var deleteKeyboardButtonRightConstraint = NSLayoutConstraint(item: self.deleteKeyboardButton, attribute: NSLayoutAttribute.Right, relatedBy: .Equal, toItem: self.view, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: -5.0)
-        self.view.addConstraints([deleteKeyboardButtonTopConstraint, deleteKeyboardButtonRightConstraint])
         
         //确认键盘按钮
         self.okKeyboardButton = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
@@ -146,13 +206,73 @@ class KeyboardViewController: UIInputViewController {
         self.okKeyboardButton.addTarget(self, action: "okButtonClick:", forControlEvents:UIControlEvents.TouchUpInside)
         self.view .addSubview(self.okKeyboardButton)
         
-        var okKeyboardButtonWidthConstraint = NSLayoutConstraint(item: self.okKeyboardButton, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: 100.0)
-        self.okKeyboardButton.addConstraints([okKeyboardButtonWidthConstraint])
-
-        var okKeyboardButtonTopConstraint = NSLayoutConstraint(item: self.okKeyboardButton, attribute: NSLayoutAttribute.Top, relatedBy: .Equal, toItem: self.deleteKeyboardButton, attribute:NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 10.0)
-        var okKeyboardButtonRightConstraint = NSLayoutConstraint(item: self.okKeyboardButton, attribute: NSLayoutAttribute.Right, relatedBy: .Equal, toItem: self.view, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: -5.0)
-        var okKeyboardButtonBottomConstraint = NSLayoutConstraint(item: self.okKeyboardButton, attribute: NSLayoutAttribute.Bottom, relatedBy: .Equal, toItem: self.view, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: -5.0)
-        self.view.addConstraints([okKeyboardButtonTopConstraint, okKeyboardButtonRightConstraint,okKeyboardButtonBottomConstraint])
+        //收键盘按钮
+        self.hideKeyboardButton = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
+        self.hideKeyboardButton.setTranslatesAutoresizingMaskIntoConstraints(false)
+        self.hideKeyboardButton.backgroundColor=UIColor.greenColor()
+        self.hideKeyboardButton.addTarget(self, action: "hideButtonClick:", forControlEvents:UIControlEvents.TouchUpInside)
+        self.view .addSubview(self.hideKeyboardButton)
+        
+        //空格键盘按钮
+        self.spaceKeyboardButton=UIButton.buttonWithType(UIButtonType.Custom) as UIButton
+        self.spaceKeyboardButton.setTranslatesAutoresizingMaskIntoConstraints(false)
+        self.spaceKeyboardButton.backgroundColor=UIColor.whiteColor()
+        self.spaceKeyboardButton.addTarget(self, action: "spaceButtonClick:", forControlEvents:UIControlEvents.TouchUpInside)
+        self.view .addSubview(self.spaceKeyboardButton)
+        
+        //展示结果
+        self.showResultLabel=UILabel(frame: CGRectZero)
+        self.showResultLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
+        self.showResultLabel.textAlignment=NSTextAlignment.Center
+        self.showResultLabel.backgroundColor=UIColor.yellowColor()
+        self.view.addSubview(self.showResultLabel)
+        
+        //莫斯展示文本
+        self.morseLabel=UILabel(frame: CGRectZero)
+        self.morseLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
+        self.morseLabel.userInteractionEnabled=true
+        self.morseLabel.textAlignment=NSTextAlignment.Center
+        self.morseLabel.numberOfLines=0
+        self.morseLabel.font=UIFont.systemFontOfSize(25)
+        self.morseLabel.backgroundColor=UIColor.purpleColor()
+        self.view.addSubview(self.morseLabel)
+        
+        //添加Label的Tap和LongPress手势
+        var lTap=UITapGestureRecognizer(target: self, action: "tapGestureRecognizerEvent:")
+        self.morseLabel.addGestureRecognizer(lTap)
+        
+        var lLongPress=UILongPressGestureRecognizer(target: self, action: "longPressGestureRecognizerEvent:")
+        self.morseLabel.addGestureRecognizer(lLongPress)
+    }
+    func initiPadSubView(){
+        //大小写切换键盘按钮
+        self.shiftKeyboardButton = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
+        self.shiftKeyboardButton.setTranslatesAutoresizingMaskIntoConstraints(false)
+        self.shiftKeyboardButton.addTarget(self, action: "shiftButtonClick:", forControlEvents:UIControlEvents.TouchUpInside)
+        self.shiftKeyboardButton.backgroundColor=UIColor.redColor()
+        self.view .addSubview(self.shiftKeyboardButton)
+        
+        //切换键盘按钮
+        self.nextKeyboardButton = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
+        self.nextKeyboardButton.setTranslatesAutoresizingMaskIntoConstraints(false)
+        self.nextKeyboardButton.addTarget(self, action: "nextButtonClick:", forControlEvents:UIControlEvents.TouchUpInside)
+        self.nextKeyboardButton.backgroundColor=UIColor.blueColor()
+        self.view .addSubview(self.nextKeyboardButton)
+        
+        //删除键盘按钮
+        self.deleteKeyboardButton = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
+        self.deleteKeyboardButton.setTranslatesAutoresizingMaskIntoConstraints(false)
+        self.deleteKeyboardButton.backgroundColor=UIColor.brownColor()
+        self.deleteKeyboardButton.addTarget(self, action: "deleteButtonClick:", forControlEvents:UIControlEvents.TouchUpInside)
+        self.view .addSubview(self.deleteKeyboardButton)
+        
+        //确认键盘按钮
+        self.okKeyboardButton = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
+        self.okKeyboardButton.setTitle("OK", forState: UIControlState.Normal)
+        self.okKeyboardButton.setTranslatesAutoresizingMaskIntoConstraints(false)
+        self.okKeyboardButton.backgroundColor=UIColor.greenColor()
+        self.okKeyboardButton.addTarget(self, action: "okButtonClick:", forControlEvents:UIControlEvents.TouchUpInside)
+        self.view .addSubview(self.okKeyboardButton)
         
         //收键盘按钮
         self.hideKeyboardButton = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
@@ -161,6 +281,146 @@ class KeyboardViewController: UIInputViewController {
         self.hideKeyboardButton.addTarget(self, action: "hideButtonClick:", forControlEvents:UIControlEvents.TouchUpInside)
         self.view .addSubview(self.hideKeyboardButton)
         
+        //空格键盘按钮
+        self.spaceKeyboardButton=UIButton.buttonWithType(UIButtonType.Custom) as UIButton
+        self.spaceKeyboardButton.setTranslatesAutoresizingMaskIntoConstraints(false)
+        self.spaceKeyboardButton.backgroundColor=UIColor.whiteColor()
+        self.spaceKeyboardButton.addTarget(self, action: "spaceButtonClick:", forControlEvents:UIControlEvents.TouchUpInside)
+        self.view .addSubview(self.spaceKeyboardButton)
+        
+        //展示结果
+        self.showResultLabel=UILabel(frame: CGRectZero)
+        self.showResultLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
+        self.showResultLabel.backgroundColor=UIColor.yellowColor()
+        self.view.addSubview(self.showResultLabel)
+        
+        //莫斯展示文本
+        self.morseLabel=UILabel(frame: CGRectZero)
+        self.morseLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
+        self.morseLabel.userInteractionEnabled=true
+        self.morseLabel.textAlignment=NSTextAlignment.Center
+        self.morseLabel.numberOfLines=0
+        self.morseLabel.backgroundColor=UIColor.purpleColor()
+        self.view.addSubview(self.morseLabel)
+        
+        //添加Label的Tap和LongPress手势
+        var lTap=UITapGestureRecognizer(target: self, action: "tapGestureRecognizerEvent:")
+        self.morseLabel.addGestureRecognizer(lTap)
+        
+        var lLongPress=UILongPressGestureRecognizer(target: self, action: "longPressGestureRecognizerEvent:")
+        self.morseLabel.addGestureRecognizer(lLongPress)
+    }
+    
+    func resetiPhoneViewConstraints(){
+        //大小写切换键盘按钮
+        var shiftKeyboardButtonWidthConstraint = NSLayoutConstraint(item: self.shiftKeyboardButton, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: 30.0)
+        var shiftKeyboardButtonHeightConstraint = NSLayoutConstraint(item: self.shiftKeyboardButton, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: 30.0)
+        self.shiftKeyboardButton .addConstraints([shiftKeyboardButtonWidthConstraint, shiftKeyboardButtonHeightConstraint])
+        
+        var shiftKeyboardButtonLeftConstraint = NSLayoutConstraint(item: self.shiftKeyboardButton, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 5.0)
+        var shiftKeyboardButtonBottomConstraint = NSLayoutConstraint(item: self.shiftKeyboardButton, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: -5.0)
+        self.view.addConstraints([shiftKeyboardButtonLeftConstraint, shiftKeyboardButtonBottomConstraint])
+        
+        //切换键盘按钮
+        var nextKeyboardButtonWidthConstraint=NSLayoutConstraint(item: self.nextKeyboardButton, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: 30)
+        var nextKeyboardButtonHeightConstraint=NSLayoutConstraint(item: self.nextKeyboardButton, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: 30)
+        self.nextKeyboardButton.addConstraints([nextKeyboardButtonWidthConstraint,nextKeyboardButtonHeightConstraint])
+        
+        var nextKeyboardButtonLeftConstraint=NSLayoutConstraint(item: self.nextKeyboardButton, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.shiftKeyboardButton, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: 10)
+        var nextKeyboardButtonBottomConstraint = NSLayoutConstraint(item: self.nextKeyboardButton, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: -5.0)
+        self.view.addConstraints([nextKeyboardButtonLeftConstraint,nextKeyboardButtonBottomConstraint])
+        
+        //收键盘按钮
+        var hideKeyboardButtonWidthConstraint=NSLayoutConstraint(item: self.hideKeyboardButton, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: 30)
+        var hideKeyboardButtonHeightConstraint=NSLayoutConstraint(item: self.hideKeyboardButton, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: 30)
+        self.hideKeyboardButton.addConstraints([hideKeyboardButtonWidthConstraint,hideKeyboardButtonHeightConstraint])
+        
+        var hideKeyboardButtonRightConstraint=NSLayoutConstraint(item: self.hideKeyboardButton, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: -5.0)
+        var hideKeyboardButtonBottomConstraint = NSLayoutConstraint(item: self.hideKeyboardButton, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: -5.0)
+        self.view.addConstraints([hideKeyboardButtonRightConstraint,hideKeyboardButtonBottomConstraint])
+        
+        //空格键盘按钮
+        var spaceKeyboardButtonHeightConstraint = NSLayoutConstraint(item: self.spaceKeyboardButton, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: 30.0)
+        self.spaceKeyboardButton.addConstraints([spaceKeyboardButtonHeightConstraint])
+        
+        var spaceKeyboardButtonLeftConstraint = NSLayoutConstraint(item: self.spaceKeyboardButton, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.nextKeyboardButton, attribute:NSLayoutAttribute.Right, multiplier: 1.0, constant: 10.0)
+        var spaceKeyboardButtonRightConstraint = NSLayoutConstraint(item: self.spaceKeyboardButton, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.hideKeyboardButton, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: -10.0)
+        var spaceKeyboardButtonBottomConstraint = NSLayoutConstraint(item: self.spaceKeyboardButton, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: -5.0)
+        self.view.addConstraints([spaceKeyboardButtonLeftConstraint, spaceKeyboardButtonRightConstraint,spaceKeyboardButtonBottomConstraint])
+        
+        //删除键盘按钮
+        var deleteKeyboardButtonWidthConstraint = NSLayoutConstraint(item: self.deleteKeyboardButton, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: 60.0)
+        var deleteKeyboardButtonHeightConstraint = NSLayoutConstraint(item: self.deleteKeyboardButton, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: 30.0)
+        self.deleteKeyboardButton .addConstraints([deleteKeyboardButtonWidthConstraint, deleteKeyboardButtonHeightConstraint])
+        
+        var deleteKeyboardButtonTopConstraint = NSLayoutConstraint(item: self.deleteKeyboardButton, attribute: NSLayoutAttribute.Top, relatedBy: .Equal, toItem: self.view, attribute:NSLayoutAttribute.Top, multiplier: 1.0, constant: 5.0)
+        var deleteKeyboardButtonRightConstraint = NSLayoutConstraint(item: self.deleteKeyboardButton, attribute: NSLayoutAttribute.Right, relatedBy: .Equal, toItem: self.view, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: -5.0)
+        self.view.addConstraints([deleteKeyboardButtonTopConstraint, deleteKeyboardButtonRightConstraint])
+        
+        //确认键盘按钮
+        var okKeyboardButtonWidthConstraint = NSLayoutConstraint(item: self.okKeyboardButton, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: 60.0)
+        self.okKeyboardButton.addConstraints([okKeyboardButtonWidthConstraint])
+        
+        var okKeyboardButtonTopConstraint = NSLayoutConstraint(item: self.okKeyboardButton, attribute: NSLayoutAttribute.Top, relatedBy: .Equal, toItem: self.deleteKeyboardButton, attribute:NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 10.0)
+        var okKeyboardButtonRightConstraint = NSLayoutConstraint(item: self.okKeyboardButton, attribute: NSLayoutAttribute.Right, relatedBy: .Equal, toItem: self.view, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: -5.0)
+        var okKeyboardButtonBottomConstraint = NSLayoutConstraint(item: self.okKeyboardButton, attribute: NSLayoutAttribute.Bottom, relatedBy: .Equal, toItem: self.hideKeyboardButton, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: -10.0)
+        self.view.addConstraints([okKeyboardButtonTopConstraint, okKeyboardButtonRightConstraint,okKeyboardButtonBottomConstraint])
+        
+        //展示结果
+        var showResultLabelHeightConstraint = NSLayoutConstraint(item: self.showResultLabel, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: 30.0)
+        self.showResultLabel.addConstraints([showResultLabelHeightConstraint])
+        
+        var showResultLabelLeftConstraint = NSLayoutConstraint(item: self.showResultLabel, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute:NSLayoutAttribute.Left, multiplier: 1.0, constant: 5.0)
+        var showResultLabelRightConstraint = NSLayoutConstraint(item: self.showResultLabel, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.deleteKeyboardButton, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: -10.0)
+        var showResultLabelTopConstraint = NSLayoutConstraint(item: self.showResultLabel, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 5.0)
+        self.view.addConstraints([showResultLabelLeftConstraint, showResultLabelRightConstraint,showResultLabelTopConstraint])
+        
+        //莫斯展示文本
+        var morseLabelLeftConstraint=NSLayoutConstraint(item: self.morseLabel, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 5.0)
+        var morseLabelRightConstraint=NSLayoutConstraint(item: self.morseLabel, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.okKeyboardButton, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: -10.0)
+        var morseLabelTopConstraint=NSLayoutConstraint(item: self.morseLabel, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.showResultLabel, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 10.0)
+        var morseLabelBottomConstraint=NSLayoutConstraint(item: self.morseLabel, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.spaceKeyboardButton, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: -10.0)
+        self.view.addConstraints([morseLabelLeftConstraint,morseLabelRightConstraint,morseLabelTopConstraint,morseLabelBottomConstraint])
+    }
+    
+    func resetiPadViewConstraints(){
+        //大小写切换键盘按钮
+        var shiftKeyboardButtonWidthConstraint = NSLayoutConstraint(item: self.shiftKeyboardButton, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: 50.0)
+        var shiftKeyboardButtonHeightConstraint = NSLayoutConstraint(item: self.shiftKeyboardButton, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: 50.0)
+        self.shiftKeyboardButton .addConstraints([shiftKeyboardButtonWidthConstraint, shiftKeyboardButtonHeightConstraint])
+        
+        var shiftKeyboardButtonLeftConstraint = NSLayoutConstraint(item: self.shiftKeyboardButton, attribute: .Left, relatedBy: .Equal, toItem: self.view, attribute: .Left, multiplier: 1.0, constant: 5.0)
+        var shiftKeyboardButtonBottomConstraint = NSLayoutConstraint(item: self.shiftKeyboardButton, attribute: .Bottom, relatedBy: .Equal, toItem: self.view, attribute: .Bottom, multiplier: 1.0, constant: -5.0)
+        self.view.addConstraints([shiftKeyboardButtonLeftConstraint, shiftKeyboardButtonBottomConstraint])
+        
+        //切换键盘按钮
+        var nextKeyboardButtonWidthConstraint = NSLayoutConstraint(item: self.nextKeyboardButton, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: 50.0)
+        var nextKeyboardButtonHeightConstraint = NSLayoutConstraint(item: self.nextKeyboardButton, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: 50.0)
+        self.nextKeyboardButton .addConstraints([nextKeyboardButtonWidthConstraint, nextKeyboardButtonHeightConstraint])
+        
+        var nextKeyboardButtonLeftConstraint = NSLayoutConstraint(item: self.nextKeyboardButton, attribute: .Left, relatedBy: .Equal, toItem: self.shiftKeyboardButton, attribute:NSLayoutAttribute.Right, multiplier: 1.0, constant: 10.0)
+        var nextKeyboardButtonBottomConstraint = NSLayoutConstraint(item: self.nextKeyboardButton, attribute: .Bottom, relatedBy: .Equal, toItem: self.view, attribute: .Bottom, multiplier: 1.0, constant: -5.0)
+        self.view.addConstraints([nextKeyboardButtonLeftConstraint, nextKeyboardButtonBottomConstraint])
+        
+        //删除键盘按钮
+        var deleteKeyboardButtonWidthConstraint = NSLayoutConstraint(item: self.deleteKeyboardButton, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: 100.0)
+        var deleteKeyboardButtonHeightConstraint = NSLayoutConstraint(item: self.deleteKeyboardButton, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: 50.0)
+        self.deleteKeyboardButton .addConstraints([deleteKeyboardButtonWidthConstraint, deleteKeyboardButtonHeightConstraint])
+        
+        var deleteKeyboardButtonTopConstraint = NSLayoutConstraint(item: self.deleteKeyboardButton, attribute: NSLayoutAttribute.Top, relatedBy: .Equal, toItem: self.view, attribute:NSLayoutAttribute.Top, multiplier: 1.0, constant: 5.0)
+        var deleteKeyboardButtonRightConstraint = NSLayoutConstraint(item: self.deleteKeyboardButton, attribute: NSLayoutAttribute.Right, relatedBy: .Equal, toItem: self.view, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: -5.0)
+        self.view.addConstraints([deleteKeyboardButtonTopConstraint, deleteKeyboardButtonRightConstraint])
+        
+        //确认键盘按钮
+        var okKeyboardButtonWidthConstraint = NSLayoutConstraint(item: self.okKeyboardButton, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: 100.0)
+        self.okKeyboardButton.addConstraints([okKeyboardButtonWidthConstraint])
+        
+        var okKeyboardButtonTopConstraint = NSLayoutConstraint(item: self.okKeyboardButton, attribute: NSLayoutAttribute.Top, relatedBy: .Equal, toItem: self.deleteKeyboardButton, attribute:NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 10.0)
+        var okKeyboardButtonRightConstraint = NSLayoutConstraint(item: self.okKeyboardButton, attribute: NSLayoutAttribute.Right, relatedBy: .Equal, toItem: self.view, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: -5.0)
+        var okKeyboardButtonBottomConstraint = NSLayoutConstraint(item: self.okKeyboardButton, attribute: NSLayoutAttribute.Bottom, relatedBy: .Equal, toItem: self.view, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: -5.0)
+        self.view.addConstraints([okKeyboardButtonTopConstraint, okKeyboardButtonRightConstraint,okKeyboardButtonBottomConstraint])
+        
+        //收键盘按钮
         var hideKeyboardButtonWidthConstraint = NSLayoutConstraint(item: self.hideKeyboardButton, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: 50.0)
         var hideKeyboardButtonHeightConstraint = NSLayoutConstraint(item: self.hideKeyboardButton, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: 50.0)
         self.hideKeyboardButton.addConstraints([hideKeyboardButtonWidthConstraint,hideKeyboardButtonHeightConstraint])
@@ -170,12 +430,6 @@ class KeyboardViewController: UIInputViewController {
         self.view.addConstraints([hideKeyboardButtonRightConstraint, hideKeyboardButtonBottomConstraint])
         
         //空格键盘按钮
-        self.spaceKeyboardButton=UIButton.buttonWithType(UIButtonType.Custom) as UIButton
-        self.spaceKeyboardButton.setTranslatesAutoresizingMaskIntoConstraints(false)
-        self.spaceKeyboardButton.backgroundColor=UIColor.whiteColor()
-        self.spaceKeyboardButton.addTarget(self, action: "spaceButtonClick:", forControlEvents:UIControlEvents.TouchUpInside)
-        self.view .addSubview(self.spaceKeyboardButton)
-        
         var spaceKeyboardButtonHeightConstraint = NSLayoutConstraint(item: self.spaceKeyboardButton, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: 50.0)
         self.spaceKeyboardButton.addConstraints([spaceKeyboardButtonHeightConstraint])
         
@@ -185,6 +439,19 @@ class KeyboardViewController: UIInputViewController {
         self.view.addConstraints([spaceKeyboardButtonLeftConstraint, spaceKeyboardButtonRightConstraint,spaceKeyboardButtonBottomConstraint])
         
         //展示结果
+        var showResultLabelHeightConstraint = NSLayoutConstraint(item: self.showResultLabel, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: 50.0)
+        self.showResultLabel.addConstraints([showResultLabelHeightConstraint])
         
+        var showResultLabelLeftConstraint = NSLayoutConstraint(item: self.showResultLabel, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute:NSLayoutAttribute.Left, multiplier: 1.0, constant: 5.0)
+        var showResultLabelRightConstraint = NSLayoutConstraint(item: self.showResultLabel, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.deleteKeyboardButton, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: -10.0)
+        var showResultLabelTopConstraint = NSLayoutConstraint(item: self.showResultLabel, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 5.0)
+        self.view.addConstraints([showResultLabelLeftConstraint, showResultLabelRightConstraint,showResultLabelTopConstraint])
+        
+        //莫斯展示文本
+        var morseLabelLeftConstraint=NSLayoutConstraint(item: self.morseLabel, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 5.0)
+        var morseLabelRightConstraint=NSLayoutConstraint(item: self.morseLabel, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.okKeyboardButton, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: -10.0)
+        var morseLabelTopConstraint=NSLayoutConstraint(item: self.morseLabel, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.showResultLabel, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 10.0)
+        var morseLabelBottomConstraint=NSLayoutConstraint(item: self.morseLabel, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.spaceKeyboardButton, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: -10.0)
+        self.view.addConstraints([morseLabelLeftConstraint,morseLabelRightConstraint,morseLabelTopConstraint,morseLabelBottomConstraint])
     }
 }
