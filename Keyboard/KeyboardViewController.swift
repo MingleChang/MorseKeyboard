@@ -185,10 +185,16 @@ class KeyboardViewController: UIInputViewController {
         self.view .addSubview(self.shiftKeyboardButton)
         
         //切换键盘按钮
+        var nextImg=UIImage(named: "next.png")
         self.nextKeyboardButton = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
+        self.nextKeyboardButton.setImage(nextImg?.resetWithColor(UIColor.whiteColor()), forState: UIControlState.Normal)
         self.nextKeyboardButton.setTranslatesAutoresizingMaskIntoConstraints(false)
         self.nextKeyboardButton.addTarget(self, action: "nextButtonClick:", forControlEvents:UIControlEvents.TouchUpInside)
-        self.nextKeyboardButton.backgroundColor=UIColor.blueColor()
+        self.nextKeyboardButton.backgroundColor=UIColor.whiteColor()
+        self.nextKeyboardButton.layer.cornerRadius=4;
+        self.nextKeyboardButton.layer.shadowColor=UIColor.grayColor().CGColor
+        self.nextKeyboardButton.layer.shadowOffset=CGSizeMake(1, 1);
+        self.nextKeyboardButton.layer.shadowOpacity=1;
         self.view .addSubview(self.nextKeyboardButton)
         
         //删除键盘按钮
