@@ -187,7 +187,7 @@ class KeyboardViewController: UIInputViewController {
         //切换键盘按钮
         var nextImg=UIImage(named: "next.png")
         self.nextKeyboardButton = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
-        self.nextKeyboardButton.setImage(nextImg?.resetWithColor(UIColor.whiteColor()), forState: UIControlState.Normal)
+        self.nextKeyboardButton.setImage(nextImg, forState: UIControlState.Normal)
         self.nextKeyboardButton.setTranslatesAutoresizingMaskIntoConstraints(false)
         self.nextKeyboardButton.addTarget(self, action: "nextButtonClick:", forControlEvents:UIControlEvents.TouchUpInside)
         self.nextKeyboardButton.backgroundColor=UIColor.whiteColor()
