@@ -15,12 +15,30 @@
 		8232C9B01A6285FA00D48351 /* MorseKeyboardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8232C9AF1A6285FA00D48351 /* MorseKeyboardTests.swift */; };
 		8232C9C21A628A3100D48351 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8232C9C11A628A3100D48351 /* KeyboardViewController.swift */; };
 		8232C9C51A628A3100D48351 /* Keyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 8232C9BD1A628A3000D48351 /* Keyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		826690E01A6EB12700C24FF8 /* next.png in Resources */ = {isa = PBXBuildFile; fileRef = 826690DE1A6EB12700C24FF8 /* next.png */; };
-		826690E11A6EB12700C24FF8 /* next.png in Resources */ = {isa = PBXBuildFile; fileRef = 826690DE1A6EB12700C24FF8 /* next.png */; };
 		826690E21A6EB12700C24FF8 /* next@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 826690DF1A6EB12700C24FF8 /* next@2x.png */; };
 		826690E31A6EB12700C24FF8 /* next@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 826690DF1A6EB12700C24FF8 /* next@2x.png */; };
 		826691091A6EB25600C24FF8 /* MCImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826691071A6EB25600C24FF8 /* MCImageExtension.swift */; };
 		8266910A1A6EB25600C24FF8 /* MCImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826691071A6EB25600C24FF8 /* MCImageExtension.swift */; };
+		8281F6031A6FFF3300D9604F /* next@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8281F6021A6FFF3300D9604F /* next@3x.png */; };
+		8281F6041A6FFF3300D9604F /* next@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8281F6021A6FFF3300D9604F /* next@3x.png */; };
+		8281F6091A70009000D9604F /* shift1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8281F6051A70009000D9604F /* shift1@3x.png */; };
+		8281F60A1A70009000D9604F /* shift1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8281F6051A70009000D9604F /* shift1@3x.png */; };
+		8281F60B1A70009000D9604F /* shift1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8281F6061A70009000D9604F /* shift1@2x.png */; };
+		8281F60C1A70009000D9604F /* shift1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8281F6061A70009000D9604F /* shift1@2x.png */; };
+		8281F60D1A70009000D9604F /* shift0@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8281F6071A70009000D9604F /* shift0@2x.png */; };
+		8281F60E1A70009000D9604F /* shift0@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8281F6071A70009000D9604F /* shift0@2x.png */; };
+		8281F60F1A70009000D9604F /* shift0@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8281F6081A70009000D9604F /* shift0@3x.png */; };
+		8281F6101A70009000D9604F /* shift0@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8281F6081A70009000D9604F /* shift0@3x.png */; };
+		8281F6131A70027500D9604F /* delete@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8281F6111A70027500D9604F /* delete@3x.png */; };
+		8281F6141A70027500D9604F /* delete@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8281F6111A70027500D9604F /* delete@3x.png */; };
+		8281F6151A70027500D9604F /* delete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8281F6121A70027500D9604F /* delete@2x.png */; };
+		8281F6161A70027500D9604F /* delete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8281F6121A70027500D9604F /* delete@2x.png */; };
+		82F82A2A1A713FFE00F15D57 /* hide@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82F82A281A713FFE00F15D57 /* hide@2x.png */; };
+		82F82A2B1A713FFE00F15D57 /* hide@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82F82A281A713FFE00F15D57 /* hide@2x.png */; };
+		82F82A2C1A713FFE00F15D57 /* hide@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82F82A291A713FFE00F15D57 /* hide@3x.png */; };
+		82F82A2D1A713FFE00F15D57 /* hide@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82F82A291A713FFE00F15D57 /* hide@3x.png */; };
+		82F82A2F1A714F1700F15D57 /* MCStringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F82A2E1A714F1700F15D57 /* MCStringExtension.swift */; };
+		82F82A301A714F1700F15D57 /* MCStringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F82A2E1A714F1700F15D57 /* MCStringExtension.swift */; };
 		C0EA10D91A638A2900087E3C /* KeyboardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EA10D71A638A2900087E3C /* KeyboardCell.swift */; };
 		C0EA10DA1A638A2900087E3C /* KeyboardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0EA10D81A638A2900087E3C /* KeyboardCell.xib */; };
 		C0EA10E41A6397FE00087E3C /* CharToMorse.plist in Resources */ = {isa = PBXBuildFile; fileRef = C0EA10E31A6397FE00087E3C /* CharToMorse.plist */; };
@@ -75,9 +93,18 @@
 		8232C9BD1A628A3000D48351 /* Keyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Keyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		8232C9C01A628A3100D48351 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8232C9C11A628A3100D48351 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
-		826690DE1A6EB12700C24FF8 /* next.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = next.png; sourceTree = "<group>"; };
 		826690DF1A6EB12700C24FF8 /* next@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "next@2x.png"; sourceTree = "<group>"; };
 		826691071A6EB25600C24FF8 /* MCImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCImageExtension.swift; sourceTree = "<group>"; };
+		8281F6021A6FFF3300D9604F /* next@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "next@3x.png"; sourceTree = "<group>"; };
+		8281F6051A70009000D9604F /* shift1@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shift1@3x.png"; sourceTree = "<group>"; };
+		8281F6061A70009000D9604F /* shift1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shift1@2x.png"; sourceTree = "<group>"; };
+		8281F6071A70009000D9604F /* shift0@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shift0@2x.png"; sourceTree = "<group>"; };
+		8281F6081A70009000D9604F /* shift0@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shift0@3x.png"; sourceTree = "<group>"; };
+		8281F6111A70027500D9604F /* delete@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "delete@3x.png"; sourceTree = "<group>"; };
+		8281F6121A70027500D9604F /* delete@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "delete@2x.png"; sourceTree = "<group>"; };
+		82F82A281A713FFE00F15D57 /* hide@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hide@2x.png"; sourceTree = "<group>"; };
+		82F82A291A713FFE00F15D57 /* hide@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hide@3x.png"; sourceTree = "<group>"; };
+		82F82A2E1A714F1700F15D57 /* MCStringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCStringExtension.swift; sourceTree = "<group>"; };
 		C0EA10D71A638A2900087E3C /* KeyboardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardCell.swift; sourceTree = "<group>"; };
 		C0EA10D81A638A2900087E3C /* KeyboardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KeyboardCell.xib; sourceTree = "<group>"; };
 		C0EA10E31A6397FE00087E3C /* CharToMorse.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CharToMorse.plist; sourceTree = "<group>"; };
@@ -191,7 +218,15 @@
 		826690DD1A6EB12700C24FF8 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				826690DE1A6EB12700C24FF8 /* next.png */,
+				82F82A281A713FFE00F15D57 /* hide@2x.png */,
+				82F82A291A713FFE00F15D57 /* hide@3x.png */,
+				8281F6111A70027500D9604F /* delete@3x.png */,
+				8281F6121A70027500D9604F /* delete@2x.png */,
+				8281F6051A70009000D9604F /* shift1@3x.png */,
+				8281F6061A70009000D9604F /* shift1@2x.png */,
+				8281F6071A70009000D9604F /* shift0@2x.png */,
+				8281F6081A70009000D9604F /* shift0@3x.png */,
+				8281F6021A6FFF3300D9604F /* next@3x.png */,
 				826690DF1A6EB12700C24FF8 /* next@2x.png */,
 			);
 			path = Images;
@@ -200,6 +235,7 @@
 		826691061A6EB25600C24FF8 /* MingleChang */ = {
 			isa = PBXGroup;
 			children = (
+				82F82A2E1A714F1700F15D57 /* MCStringExtension.swift */,
 				826691071A6EB25600C24FF8 /* MCImageExtension.swift */,
 			);
 			path = MingleChang;
@@ -326,12 +362,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8281F6031A6FFF3300D9604F /* next@3x.png in Resources */,
+				82F82A2A1A713FFE00F15D57 /* hide@2x.png in Resources */,
+				8281F60F1A70009000D9604F /* shift0@3x.png in Resources */,
+				8281F6151A70027500D9604F /* delete@2x.png in Resources */,
 				8232C99F1A6285FA00D48351 /* Main.storyboard in Resources */,
 				C0EA10E81A63A66600087E3C /* MorseToChar.plist in Resources */,
+				82F82A2C1A713FFE00F15D57 /* hide@3x.png in Resources */,
 				826690E21A6EB12700C24FF8 /* next@2x.png in Resources */,
-				826690E01A6EB12700C24FF8 /* next.png in Resources */,
 				8232C9A41A6285FA00D48351 /* LaunchScreen.xib in Resources */,
+				8281F60D1A70009000D9604F /* shift0@2x.png in Resources */,
+				8281F6091A70009000D9604F /* shift1@3x.png in Resources */,
+				8281F60B1A70009000D9604F /* shift1@2x.png in Resources */,
 				8232C9A11A6285FA00D48351 /* Images.xcassets in Resources */,
+				8281F6131A70027500D9604F /* delete@3x.png in Resources */,
 				C0EA10E41A6397FE00087E3C /* CharToMorse.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -347,9 +391,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82F82A2D1A713FFE00F15D57 /* hide@3x.png in Resources */,
 				C0EA10E91A63A66600087E3C /* MorseToChar.plist in Resources */,
+				8281F60C1A70009000D9604F /* shift1@2x.png in Resources */,
+				8281F60A1A70009000D9604F /* shift1@3x.png in Resources */,
+				82F82A2B1A713FFE00F15D57 /* hide@2x.png in Resources */,
+				8281F6161A70027500D9604F /* delete@2x.png in Resources */,
+				8281F6101A70009000D9604F /* shift0@3x.png in Resources */,
 				C0EA10DA1A638A2900087E3C /* KeyboardCell.xib in Resources */,
-				826690E11A6EB12700C24FF8 /* next.png in Resources */,
+				8281F60E1A70009000D9604F /* shift0@2x.png in Resources */,
+				8281F6141A70027500D9604F /* delete@3x.png in Resources */,
+				8281F6041A6FFF3300D9604F /* next@3x.png in Resources */,
 				826690E31A6EB12700C24FF8 /* next@2x.png in Resources */,
 				C0EA10E51A6397FE00087E3C /* CharToMorse.plist in Resources */,
 			);
@@ -366,6 +418,7 @@
 				826691091A6EB25600C24FF8 /* MCImageExtension.swift in Sources */,
 				C0EA10EA1A63AC6800087E3C /* KeyboardViewController.swift in Sources */,
 				8232C99A1A6285FA00D48351 /* AppDelegate.swift in Sources */,
+				82F82A2F1A714F1700F15D57 /* MCStringExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -383,6 +436,7 @@
 			files = (
 				C0EA10D91A638A2900087E3C /* KeyboardCell.swift in Sources */,
 				8266910A1A6EB25600C24FF8 /* MCImageExtension.swift in Sources */,
+				82F82A301A714F1700F15D57 /* MCStringExtension.swift in Sources */,
 				8232C9C21A628A3100D48351 /* KeyboardViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
