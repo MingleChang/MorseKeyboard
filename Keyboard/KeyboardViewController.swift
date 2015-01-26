@@ -101,10 +101,10 @@ class KeyboardViewController: UIInputViewController {
         }
         var lString=""
         var lAllMorse=self.morseLabel.text!.componentsSeparatedByString("/")
-        var lAllMorseKey=self.AllMorseDic!.allKeys as NSArray
+        var lAllMorseKey=self.AllMorseDic.allKeys as NSArray
         for morse in lAllMorse{
             if(lAllMorseKey.containsObject(morse)){
-                lString=lString.stringByAppendingString(self.AllMorseDic!.objectForKey(morse) as NSString)
+                lString=lString.stringByAppendingString(self.AllMorseDic.objectForKey(morse) as NSString)
             }else{
                 break
             }
