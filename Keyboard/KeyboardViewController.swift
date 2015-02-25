@@ -9,8 +9,8 @@
 import UIKit
 
 class KeyboardViewController: UIInputViewController {
-    let CELL_ID="CellID"
-    let AllMorseDic=NSDictionary(contentsOfFile:NSBundle.mainBundle().pathForResource("MorseToChar.plist", ofType: nil)!)
+    let CornerRadius:CGFloat=2.0
+    let AllMorseDic=NSDictionary(contentsOfFile:NSBundle.mainBundle().pathForResource("MorseToChar.plist", ofType: nil)!)!
     
     var isShift:Bool=true
     
@@ -51,13 +51,13 @@ class KeyboardViewController: UIInputViewController {
     override func textDidChange(textInput: UITextInput) {
         // The app has just changed the document's contents, the document context has been updated.
         
-        var textColor: UIColor
-        var proxy = self.textDocumentProxy as UITextDocumentProxy
-        if proxy.keyboardAppearance == UIKeyboardAppearance.Dark {
-            textColor = UIColor.whiteColor()
-        } else {
-            textColor = UIColor.blackColor()
-        }
+//        var textColor: UIColor
+//        var proxy = self.textDocumentProxy as UITextDocumentProxy
+//        if proxy.keyboardAppearance == UIKeyboardAppearance.Dark {
+//            textColor = UIColor.whiteColor()
+//        } else {
+//            textColor = UIColor.blackColor()
+//        }
     }
     
     //MARK: 
@@ -66,14 +66,19 @@ class KeyboardViewController: UIInputViewController {
         self.showResultLabel.text=""
     }
     func changeShift(){
-        if(self.checkMorseLabelTextEmpty()){
-            
-        }else{
-            var lText=self.morseLabel.text! as NSString
-            lText=lText.substringFromIndex(lText.length-1)
-            if(!lText.isEqualToString("/")){
-            }
+        if(self.checkMorseLabelTextEmpty()||self.checkShowResultLabelTextEmpty()){
+            return
         }
+        if(self.morseLabel.text!.lastString()=="/"){
+            return
+        }
+        let lAllMorse=self.morseLabel.text!.componentsSeparatedByString("/")
+        if(lAllMorse.count>self.showResultLabel.text!.length()){
+            return
+        }
+        let lLastString=self.showResultLabel.text!.lastString()
+        let lRemoveLastString=self.showResultLabel.text!.stringByRemoveLastString()
+        self.showResultLabel.text=lRemoveLastString + (self.isShift ? lLastString.uppercaseString : lLastString.lowercaseString)
     }
     func checkMorseLabelTextEmpty()->Bool{
         if(self.morseLabel.text == nil){
@@ -95,21 +100,26 @@ class KeyboardViewController: UIInputViewController {
     }
     
     func setShowLabelText(){
+        if(self.showResultLabel.text == nil){
+            self.showResultLabel.text=""
+        }
         if(self.checkMorseLabelTextEmpty()){
             self.showResultLabel.text=""
             return
         }
-        var lString=""
-        var lAllMorse=self.morseLabel.text!.componentsSeparatedByString("/")
-        var lAllMorseKey=self.AllMorseDic.allKeys as NSArray
-        for morse in lAllMorse{
-            if(lAllMorseKey.containsObject(morse)){
-                lString=lString.stringByAppendingString(self.AllMorseDic.objectForKey(morse) as NSString)
-            }else{
-                break
-            }
+        let lAllMorse=self.morseLabel.text!.componentsSeparatedByString("/") as Array
+        let lMorse=lAllMorse.last as String!
+        let lAllMorseKey=self.AllMorseDic.allKeys
+        var lString:String?=self.AllMorseDic.objectForKey(lMorse) as String?
+        if(lString == nil){
+            lString = ""
         }
-        self.showResultLabel.text=lString
+        
+        if(self.showResultLabel.text!.length() < lAllMorse.count){
+            self.showResultLabel.text=self.showResultLabel.text! + (self.isShift ? lString!.uppercaseString : lString!.lowercaseString)
+        }else{
+            self.showResultLabel.text=self.showResultLabel.text!.stringByRemoveLastString() + (self.isShift ? lString!.uppercaseString : lString!.lowercaseString)
+        }
     }
     // MARK: Button Click -- 按钮点击事件
     func okButtonClick(sender:UIButton){
@@ -124,7 +134,7 @@ class KeyboardViewController: UIInputViewController {
     }
     func shiftButtonClick(sender:UIButton){
         self.isShift = !self.isShift
-        var shiftImg=UIImage(named: NSString(format: "shift%i.png", self.isShift ? 1 : 0))
+        var shiftImg=UIImage(named: NSString(format: "Shift%i.png", self.isShift ? 1 : 0))
         shiftImg=shiftImg?.resetWithColor(UIColor.lightGrayColor())
         self.shiftKeyboardButton.setImage(shiftImg, forState: UIControlState.Normal)
         self.changeShift()
@@ -133,10 +143,12 @@ class KeyboardViewController: UIInputViewController {
         if(self.checkMorseLabelTextEmpty()){
             var proxy=self.textDocumentProxy as UITextDocumentProxy
             proxy.deleteBackward()
+            return
+        }
+        if(self.morseLabel.text!.lastString()=="/"){
+            self.morseLabel.text=self.morseLabel.text!.stringByRemoveLastString()
         }else{
-            var lText=self.morseLabel.text! as NSString
-            lText=lText.substringToIndex(lText.length-1)
-            self.morseLabel.text=lText
+            self.morseLabel.text=self.morseLabel.text!.stringByRemoveLastString()
             self.setShowLabelText()
         }
     }
@@ -144,9 +156,16 @@ class KeyboardViewController: UIInputViewController {
         if(self.checkMorseLabelTextEmpty()){
             var proxy=self.textDocumentProxy as UITextDocumentProxy
             proxy.insertText(" ")
-        }else{
-            self.morseLabel.text=self.morseLabel.text?.stringByAppendingString("/")
+            return
         }
+        if(self.morseLabel.text!.lastString()=="/"){
+            return
+        }
+        self.isShift = false
+        var shiftImg=UIImage(named: NSString(format: "Shift%i.png", self.isShift ? 1 : 0))
+        shiftImg=shiftImg?.resetWithColor(UIColor.lightGrayColor())
+        self.shiftKeyboardButton.setImage(shiftImg, forState: UIControlState.Normal)
+        self.morseLabel.text=self.morseLabel.text?.stringByAppendingString("/")
     }
     func nextButtonClick(sender:UIButton){
         self.advanceToNextInputMode()
@@ -175,6 +194,7 @@ class KeyboardViewController: UIInputViewController {
         self.allInfo=NSArray()
     }
     func initAllSubViews(){
+        self.view.backgroundColor=UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 0.2)
         if(UIDevice.currentDevice().userInterfaceIdiom==UIUserInterfaceIdiom.Phone){
             self.initiPhoneSubView()
             self.resetiPhoneViewConstraints()
@@ -194,45 +214,36 @@ class KeyboardViewController: UIInputViewController {
     
     func initiPhoneSubView(){
         //大小写切换键盘按钮
-        var shiftImg=UIImage(named: "shift1.png")
+        var shiftImg=UIImage(named: "Shift1.png")
         shiftImg=shiftImg?.resetWithColor(UIColor.lightGrayColor())
         self.shiftKeyboardButton=UIButton.buttonWithType(UIButtonType.Custom) as UIButton
         self.shiftKeyboardButton.setImage(shiftImg, forState: UIControlState.Normal)
         self.shiftKeyboardButton.setTranslatesAutoresizingMaskIntoConstraints(false)
         self.shiftKeyboardButton.addTarget(self, action: "shiftButtonClick:", forControlEvents:UIControlEvents.TouchUpInside)
         self.shiftKeyboardButton.backgroundColor=UIColor.whiteColor()
-        self.shiftKeyboardButton.layer.cornerRadius=4;
-        self.shiftKeyboardButton.layer.shadowColor=UIColor.grayColor().CGColor
-        self.shiftKeyboardButton.layer.shadowOffset=CGSizeMake(1, 1);
-        self.shiftKeyboardButton.layer.shadowOpacity=1;
+        self.shiftKeyboardButton.layer.cornerRadius=CornerRadius;
         self.view .addSubview(self.shiftKeyboardButton)
         
         //切换键盘按钮
-        var nextImg=UIImage(named: "next.png")
+        var nextImg=UIImage(named: "Next.png")
         nextImg=nextImg?.resetWithColor(UIColor.lightGrayColor())
         self.nextKeyboardButton = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
         self.nextKeyboardButton.setImage(nextImg, forState: UIControlState.Normal)
         self.nextKeyboardButton.setTranslatesAutoresizingMaskIntoConstraints(false)
         self.nextKeyboardButton.addTarget(self, action: "nextButtonClick:", forControlEvents:UIControlEvents.TouchUpInside)
         self.nextKeyboardButton.backgroundColor=UIColor.whiteColor()
-        self.nextKeyboardButton.layer.cornerRadius=4;
-        self.nextKeyboardButton.layer.shadowColor=UIColor.grayColor().CGColor
-        self.nextKeyboardButton.layer.shadowOffset=CGSizeMake(1, 1);
-        self.nextKeyboardButton.layer.shadowOpacity=1;
+        self.nextKeyboardButton.layer.cornerRadius=CornerRadius;
         self.view .addSubview(self.nextKeyboardButton)
         
         //删除键盘按钮
-        var deleteImg=UIImage(named: "delete.png")
+        var deleteImg=UIImage(named: "Delete.png")
         deleteImg=deleteImg?.resetWithColor(UIColor.lightGrayColor())
         self.deleteKeyboardButton = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
         self.deleteKeyboardButton.setImage(deleteImg, forState: UIControlState.Normal)
         self.deleteKeyboardButton.setTranslatesAutoresizingMaskIntoConstraints(false)
         self.deleteKeyboardButton.addTarget(self, action: "deleteButtonClick:", forControlEvents:UIControlEvents.TouchUpInside)
         self.deleteKeyboardButton.backgroundColor=UIColor.whiteColor()
-        self.deleteKeyboardButton.layer.cornerRadius=4;
-        self.deleteKeyboardButton.layer.shadowColor=UIColor.grayColor().CGColor
-        self.deleteKeyboardButton.layer.shadowOffset=CGSizeMake(1, 1);
-        self.deleteKeyboardButton.layer.shadowOpacity=1;
+        self.deleteKeyboardButton.layer.cornerRadius=CornerRadius;
         self.view .addSubview(self.deleteKeyboardButton)
         
         //确认键盘按钮
@@ -242,24 +253,18 @@ class KeyboardViewController: UIInputViewController {
         self.okKeyboardButton.setTranslatesAutoresizingMaskIntoConstraints(false)
         self.okKeyboardButton.addTarget(self, action: "okButtonClick:", forControlEvents:UIControlEvents.TouchUpInside)
         self.okKeyboardButton.backgroundColor=UIColor.whiteColor()
-        self.okKeyboardButton.layer.cornerRadius=4;
-        self.okKeyboardButton.layer.shadowColor=UIColor.grayColor().CGColor
-        self.okKeyboardButton.layer.shadowOffset=CGSizeMake(1, 1);
-        self.okKeyboardButton.layer.shadowOpacity=1;
+        self.okKeyboardButton.layer.cornerRadius=CornerRadius;
         self.view .addSubview(self.okKeyboardButton)
         
         //收键盘按钮
-        var hideImg=UIImage(named: "hide.png")
+        var hideImg=UIImage(named: "Hide.png")
         hideImg=hideImg?.resetWithColor(UIColor.lightGrayColor())
         self.hideKeyboardButton = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
         self.hideKeyboardButton.setImage(hideImg, forState: UIControlState.Normal)
         self.hideKeyboardButton.setTranslatesAutoresizingMaskIntoConstraints(false)
         self.hideKeyboardButton.addTarget(self, action: "hideButtonClick:", forControlEvents:UIControlEvents.TouchUpInside)
         self.hideKeyboardButton.backgroundColor=UIColor.whiteColor()
-        self.hideKeyboardButton.layer.cornerRadius=4;
-        self.hideKeyboardButton.layer.shadowColor=UIColor.grayColor().CGColor
-        self.hideKeyboardButton.layer.shadowOffset=CGSizeMake(1, 1);
-        self.hideKeyboardButton.layer.shadowOpacity=1;
+        self.hideKeyboardButton.layer.cornerRadius=CornerRadius;
         self.view .addSubview(self.hideKeyboardButton)
         
         //空格键盘按钮
@@ -269,10 +274,7 @@ class KeyboardViewController: UIInputViewController {
         self.spaceKeyboardButton.setTranslatesAutoresizingMaskIntoConstraints(false)
         self.spaceKeyboardButton.addTarget(self, action: "spaceButtonClick:", forControlEvents:UIControlEvents.TouchUpInside)
         self.spaceKeyboardButton.backgroundColor=UIColor.whiteColor()
-        self.spaceKeyboardButton.layer.cornerRadius=4;
-        self.spaceKeyboardButton.layer.shadowColor=UIColor.grayColor().CGColor
-        self.spaceKeyboardButton.layer.shadowOffset=CGSizeMake(1, 1);
-        self.spaceKeyboardButton.layer.shadowOpacity=1;
+        self.spaceKeyboardButton.layer.cornerRadius=CornerRadius;
         self.view .addSubview(self.spaceKeyboardButton)
         
         //展示结果
@@ -281,11 +283,8 @@ class KeyboardViewController: UIInputViewController {
         self.showResultLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
         self.showResultLabel.textAlignment=NSTextAlignment.Center
         self.showResultLabel.backgroundColor=UIColor.whiteColor()
-        self.showResultLabel.layer.cornerRadius=4;
+        self.showResultLabel.layer.cornerRadius=CornerRadius;
         self.showResultLabel.layer.masksToBounds=true
-        self.showResultLabel.layer.shadowColor=UIColor.grayColor().CGColor
-        self.showResultLabel.layer.shadowOffset=CGSizeMake(1, 1);
-        self.showResultLabel.layer.shadowOpacity=1;
         self.view.addSubview(self.showResultLabel)
         
         //莫斯展示文本
@@ -297,10 +296,8 @@ class KeyboardViewController: UIInputViewController {
         self.morseLabel.numberOfLines=0
         self.morseLabel.font=UIFont.systemFontOfSize(25)
         self.morseLabel.backgroundColor=UIColor.whiteColor()
-        self.morseLabel.layer.cornerRadius=4;
-        self.morseLabel.layer.shadowColor=UIColor.grayColor().CGColor
-        self.morseLabel.layer.shadowOffset=CGSizeMake(1, 1);
-        self.morseLabel.layer.shadowOpacity=1;
+        self.morseLabel.layer.cornerRadius=CornerRadius;
+        self.morseLabel.layer.masksToBounds=true
         self.view.addSubview(self.morseLabel)
         
         //添加Label的Tap和LongPress手势

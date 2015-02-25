@@ -44,15 +44,27 @@ extension NSString{
 //    }
 }
 extension String{
+    func length()->NSInteger{
+        return countElements(self)
+    }
     func lastString()->String{
+        assert(self.length()>0, "String length must geater than 0 -- lastString")
         let lStartIndex=advance(self.endIndex, -1)
         let lEndIndex=advance(self.endIndex, 0)
         let lRange=Range(start: lStartIndex, end: lEndIndex)
         return self.substringWithRange(lRange)
     }
     func stringByRemoveLastString()->String{
+        assert(self.length()>0, "String length must geater than 0 -- lastString")
         let lEndIndex=advance(self.endIndex, -1)
         let lRange=Range(start: self.startIndex, end: lEndIndex)
+        return self.substringWithRange(lRange)
+    }
+    func substringWith(start:NSInteger,toEnd end:NSInteger)->String{
+        assert(self.length()>=start+end, NSString(format: "String length %i less than %i plus %i-- lastString", self.length(),start,end))
+        let lStartIndex=advance(self.startIndex, start)
+        let lEndIndex=advance(self.startIndex, end)
+        let lRange=Range(start: lStartIndex, end: lEndIndex)
         return self.substringWithRange(lRange)
     }
 }
