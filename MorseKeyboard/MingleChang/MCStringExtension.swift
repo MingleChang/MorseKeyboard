@@ -43,3 +43,16 @@ extension NSString{
 //        return md5String
 //    }
 }
+extension String{
+    func lastString()->String{
+        let lStartIndex=advance(self.endIndex, -1)
+        let lEndIndex=advance(self.endIndex, 0)
+        let lRange=Range(start: lStartIndex, end: lEndIndex)
+        return self.substringWithRange(lRange)
+    }
+    func stringByRemoveLastString()->String{
+        let lEndIndex=advance(self.endIndex, -1)
+        let lRange=Range(start: self.startIndex, end: lEndIndex)
+        return self.substringWithRange(lRange)
+    }
+}
