@@ -20,6 +20,10 @@
 		82F82A2F1A714F1700F15D57 /* MCStringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F82A2E1A714F1700F15D57 /* MCStringExtension.swift */; };
 		82F82A301A714F1700F15D57 /* MCStringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F82A2E1A714F1700F15D57 /* MCStringExtension.swift */; };
 		C0197CA51A9D9D6900762EDF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8232C9A01A6285FA00D48351 /* Images.xcassets */; };
+		C0197CDC1A9DC3B000762EDF /* MorseListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0197CDB1A9DC3B000762EDF /* MorseListViewController.swift */; };
+		C0197CDF1A9DC7F000762EDF /* MorseListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0197CDD1A9DC7F000762EDF /* MorseListCell.swift */; };
+		C0197CE01A9DC7F000762EDF /* MorseListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0197CDE1A9DC7F000762EDF /* MorseListCell.xib */; };
+		C0197CE21A9DCB4600762EDF /* MorseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0197CE11A9DCB4600762EDF /* MorseManager.swift */; };
 		C0EA10E41A6397FE00087E3C /* CharToMorse.plist in Resources */ = {isa = PBXBuildFile; fileRef = C0EA10E31A6397FE00087E3C /* CharToMorse.plist */; };
 		C0EA10E51A6397FE00087E3C /* CharToMorse.plist in Resources */ = {isa = PBXBuildFile; fileRef = C0EA10E31A6397FE00087E3C /* CharToMorse.plist */; };
 		C0EA10E81A63A66600087E3C /* MorseToChar.plist in Resources */ = {isa = PBXBuildFile; fileRef = C0EA10E71A63A66600087E3C /* MorseToChar.plist */; };
@@ -74,6 +78,10 @@
 		8232C9C11A628A3100D48351 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
 		826691071A6EB25600C24FF8 /* MCImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCImageExtension.swift; sourceTree = "<group>"; };
 		82F82A2E1A714F1700F15D57 /* MCStringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCStringExtension.swift; sourceTree = "<group>"; };
+		C0197CDB1A9DC3B000762EDF /* MorseListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MorseListViewController.swift; sourceTree = "<group>"; };
+		C0197CDD1A9DC7F000762EDF /* MorseListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MorseListCell.swift; sourceTree = "<group>"; };
+		C0197CDE1A9DC7F000762EDF /* MorseListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MorseListCell.xib; sourceTree = "<group>"; };
+		C0197CE11A9DCB4600762EDF /* MorseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MorseManager.swift; sourceTree = "<group>"; };
 		C0EA10E31A6397FE00087E3C /* CharToMorse.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CharToMorse.plist; sourceTree = "<group>"; };
 		C0EA10E71A63A66600087E3C /* MorseToChar.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MorseToChar.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -128,8 +136,12 @@
 			isa = PBXGroup;
 			children = (
 				826691061A6EB25600C24FF8 /* MingleChang */,
+				C0197CE11A9DCB4600762EDF /* MorseManager.swift */,
 				8232C9991A6285FA00D48351 /* AppDelegate.swift */,
+				C0197CDB1A9DC3B000762EDF /* MorseListViewController.swift */,
 				8232C99B1A6285FA00D48351 /* ViewController.swift */,
+				C0197CDD1A9DC7F000762EDF /* MorseListCell.swift */,
+				C0197CDE1A9DC7F000762EDF /* MorseListCell.xib */,
 				8232C99D1A6285FA00D48351 /* Main.storyboard */,
 				8232C9A01A6285FA00D48351 /* Images.xcassets */,
 				8232C9A21A6285FA00D48351 /* LaunchScreen.xib */,
@@ -311,6 +323,7 @@
 			files = (
 				8232C99F1A6285FA00D48351 /* Main.storyboard in Resources */,
 				C0EA10E81A63A66600087E3C /* MorseToChar.plist in Resources */,
+				C0197CE01A9DC7F000762EDF /* MorseListCell.xib in Resources */,
 				8232C9A41A6285FA00D48351 /* LaunchScreen.xib in Resources */,
 				8232C9A11A6285FA00D48351 /* Images.xcassets in Resources */,
 				C0EA10E41A6397FE00087E3C /* CharToMorse.plist in Resources */,
@@ -342,10 +355,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				8232C99C1A6285FA00D48351 /* ViewController.swift in Sources */,
+				C0197CDF1A9DC7F000762EDF /* MorseListCell.swift in Sources */,
 				826691091A6EB25600C24FF8 /* MCImageExtension.swift in Sources */,
 				C0EA10EA1A63AC6800087E3C /* KeyboardViewController.swift in Sources */,
 				8232C99A1A6285FA00D48351 /* AppDelegate.swift in Sources */,
 				82F82A2F1A714F1700F15D57 /* MCStringExtension.swift in Sources */,
+				C0197CE21A9DCB4600762EDF /* MorseManager.swift in Sources */,
+				C0197CDC1A9DC3B000762EDF /* MorseListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
