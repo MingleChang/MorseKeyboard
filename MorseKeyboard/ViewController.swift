@@ -25,7 +25,7 @@ class ViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        let lString=NSBundle.mainBundle().pathForResource("shake_sound", ofType: "mp3")
+        let lString=NSBundle.mainBundle().pathForResource("Morse_Code_-_Hyphen,_Minus", ofType: "mp3")
         let lURL=NSURL(string: lString!)
         lPlayer=AVAudioPlayer(contentsOfURL: lURL, error: nil)
         lPlayer.volume=1

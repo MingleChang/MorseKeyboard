@@ -10,7 +10,6 @@ import UIKit
 
 class KeyboardViewController: UIInputViewController {
     let CornerRadius:CGFloat=2.0
-    let AllMorseDic=NSDictionary(contentsOfFile:NSBundle.mainBundle().pathForResource("MorseToChar.plist", ofType: nil)!)!
     
     var isShift:Bool=true
     
@@ -109,8 +108,8 @@ class KeyboardViewController: UIInputViewController {
         }
         let lAllMorse=self.morseLabel.text!.componentsSeparatedByString("/") as Array
         let lMorse=lAllMorse.last as String!
-        let lAllMorseKey=self.AllMorseDic.allKeys
-        var lString:String?=self.AllMorseDic.objectForKey(lMorse) as String?
+        let lAllMorseKey=MorseManager.sharedInstance().MorseToCharDic.allKeys
+        var lString:String?=MorseManager.sharedInstance().MorseToCharDic.objectForKey(lMorse) as String?
         if(lString == nil){
             lString = ""
         }

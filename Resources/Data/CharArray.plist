@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<string>a</string>
+	<string>b</string>
+	<string>c</string>
+	<string>d</string>
+	<string>e</string>
+	<string>f</string>
+	<string>g</string>
+	<string>h</string>
+	<string>i</string>
+	<string>j</string>
+	<string>k</string>
+	<string>l</string>
+	<string>m</string>
+	<string>n</string>
+	<string>o</string>
+	<string>p</string>
+	<string>q</string>
+	<string>r</string>
+	<string>s</string>
+	<string>t</string>
+	<string>u</string>
+	<string>v</string>
+	<string>w</string>
+	<string>x</string>
+	<string>y</string>
+	<string>z</string>
+	<string>0</string>
+	<string>1</string>
+	<string>2</string>
+	<string>3</string>
+	<string>4</string>
+	<string>5</string>
+	<string>6</string>
+	<string>7</string>
+	<string>8</string>
+	<string>9</string>
+	<string>.</string>
+	<string>:</string>
+	<string>,</string>
+	<string>;</string>
+	<string>?</string>
+	<string>!</string>
+	<string>&apos;</string>
+	<string>/</string>
+	<string>+</string>
+	<string>-</string>
+	<string>=</string>
+	<string>_</string>
+	<string>&quot;</string>
+	<string>(</string>
+	<string>)</string>
+	<string>$</string>
+	<string>&amp;</string>
+	<string>@</string>
+</array>
+</plist>

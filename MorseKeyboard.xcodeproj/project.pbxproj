@@ -24,13 +24,71 @@
 		C0197CDF1A9DC7F000762EDF /* MorseListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0197CDD1A9DC7F000762EDF /* MorseListCell.swift */; };
 		C0197CE01A9DC7F000762EDF /* MorseListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0197CDE1A9DC7F000762EDF /* MorseListCell.xib */; };
 		C0197CE21A9DCB4600762EDF /* MorseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0197CE11A9DCB4600762EDF /* MorseManager.swift */; };
-		C093A6E31A9EB21500EC9EA2 /* CharToSound.plist in Resources */ = {isa = PBXBuildFile; fileRef = C093A6E21A9EB21500EC9EA2 /* CharToSound.plist */; };
 		C093A7521A9EB3D900EC9EA2 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C093A7511A9EB3D900EC9EA2 /* AVFoundation.framework */; };
-		C0EA10E41A6397FE00087E3C /* CharToMorse.plist in Resources */ = {isa = PBXBuildFile; fileRef = C0EA10E31A6397FE00087E3C /* CharToMorse.plist */; };
-		C0EA10E51A6397FE00087E3C /* CharToMorse.plist in Resources */ = {isa = PBXBuildFile; fileRef = C0EA10E31A6397FE00087E3C /* CharToMorse.plist */; };
-		C0EA10E81A63A66600087E3C /* MorseToChar.plist in Resources */ = {isa = PBXBuildFile; fileRef = C0EA10E71A63A66600087E3C /* MorseToChar.plist */; };
-		C0EA10E91A63A66600087E3C /* MorseToChar.plist in Resources */ = {isa = PBXBuildFile; fileRef = C0EA10E71A63A66600087E3C /* MorseToChar.plist */; };
 		C0EA10EA1A63AC6800087E3C /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8232C9C11A628A3100D48351 /* KeyboardViewController.swift */; };
+		C0F393531A9EBDC6008B20B1 /* CharToMorse.plist in Resources */ = {isa = PBXBuildFile; fileRef = C0F393191A9EBDC6008B20B1 /* CharToMorse.plist */; };
+		C0F393541A9EBDC6008B20B1 /* CharToSound.plist in Resources */ = {isa = PBXBuildFile; fileRef = C0F3931A1A9EBDC6008B20B1 /* CharToSound.plist */; };
+		C0F393551A9EBDC6008B20B1 /* MorseToChar.plist in Resources */ = {isa = PBXBuildFile; fileRef = C0F3931B1A9EBDC6008B20B1 /* MorseToChar.plist */; };
+		C0F393561A9EBDC6008B20B1 /* Morse_Code_-_0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C0F3931D1A9EBDC6008B20B1 /* Morse_Code_-_0.mp3 */; };
+		C0F393571A9EBDC6008B20B1 /* Morse_Code_-_1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C0F3931E1A9EBDC6008B20B1 /* Morse_Code_-_1.mp3 */; };
+		C0F393581A9EBDC6008B20B1 /* Morse_Code_-_2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C0F3931F1A9EBDC6008B20B1 /* Morse_Code_-_2.mp3 */; };
+		C0F393591A9EBDC6008B20B1 /* Morse_Code_-_3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C0F393201A9EBDC6008B20B1 /* Morse_Code_-_3.mp3 */; };
+		C0F3935A1A9EBDC6008B20B1 /* Morse_Code_-_4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C0F393211A9EBDC6008B20B1 /* Morse_Code_-_4.mp3 */; };
+		C0F3935B1A9EBDC6008B20B1 /* Morse_Code_-_5.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C0F393221A9EBDC6008B20B1 /* Morse_Code_-_5.mp3 */; };
+		C0F3935C1A9EBDC6008B20B1 /* Morse_Code_-_6.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C0F393231A9EBDC6008B20B1 /* Morse_Code_-_6.mp3 */; };
+		C0F3935D1A9EBDC6008B20B1 /* Morse_Code_-_7.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C0F393241A9EBDC6008B20B1 /* Morse_Code_-_7.mp3 */; };
+		C0F3935E1A9EBDC6008B20B1 /* Morse_Code_-_8.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C0F393251A9EBDC6008B20B1 /* Morse_Code_-_8.mp3 */; };
+		C0F3935F1A9EBDC6008B20B1 /* Morse_Code_-_9.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C0F393261A9EBDC6008B20B1 /* Morse_Code_-_9.mp3 */; };
+		C0F393601A9EBDC6008B20B1 /* Morse_Code_-_a.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C0F393271A9EBDC6008B20B1 /* Morse_Code_-_a.mp3 */; };
+		C0F393611A9EBDC6008B20B1 /* Morse_Code_-_Ampersand.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C0F393281A9EBDC6008B20B1 /* Morse_Code_-_Ampersand.mp3 */; };
+		C0F393621A9EBDC6008B20B1 /* Morse_Code_-_Apostrope.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C0F393291A9EBDC6008B20B1 /* Morse_Code_-_Apostrope.mp3 */; };
+		C0F393631A9EBDC6008B20B1 /* Morse_Code_-_At_(Commercial_At).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C0F3932A1A9EBDC6008B20B1 /* Morse_Code_-_At_(Commercial_At).mp3 */; };
+		C0F393641A9EBDC6008B20B1 /* Morse_Code_-_b.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C0F3932B1A9EBDC6008B20B1 /* Morse_Code_-_b.mp3 */; };
+		C0F393651A9EBDC6008B20B1 /* Morse_Code_-_c.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C0F3932C1A9EBDC6008B20B1 /* Morse_Code_-_c.mp3 */; };
+		C0F393661A9EBDC6008B20B1 /* Morse_Code_-_Colon.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C0F3932D1A9EBDC6008B20B1 /* Morse_Code_-_Colon.mp3 */; };
+		C0F393671A9EBDC6008B20B1 /* Morse_Code_-_Comma.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C0F3932E1A9EBDC6008B20B1 /* Morse_Code_-_Comma.mp3 */; };
+		C0F393681A9EBDC6008B20B1 /* Morse_Code_-_d.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C0F3932F1A9EBDC6008B20B1 /* Morse_Code_-_d.mp3 */; };
+		C0F393691A9EBDC6008B20B1 /* Morse_Code_-_Dollar_Sign.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C0F393301A9EBDC6008B20B1 /* Morse_Code_-_Dollar_Sign.mp3 */; };
+		C0F3936A1A9EBDC6008B20B1 /* Morse_Code_-_e.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C0F393311A9EBDC6008B20B1 /* Morse_Code_-_e.mp3 */; };
+		C0F3936B1A9EBDC6008B20B1 /* Morse_Code_-_Equals.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C0F393321A9EBDC6008B20B1 /* Morse_Code_-_Equals.mp3 */; };
+		C0F3936C1A9EBDC6008B20B1 /* Morse_Code_-_Exclamation_Point.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C0F393331A9EBDC6008B20B1 /* Morse_Code_-_Exclamation_Point.mp3 */; };
+		C0F3936D1A9EBDC6008B20B1 /* Morse_Code_-_f.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C0F393341A9EBDC6008B20B1 /* Morse_Code_-_f.mp3 */; };
+		C0F3936E1A9EBDC6008B20B1 /* Morse_Code_-_g.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C0F393351A9EBDC6008B20B1 /* Morse_Code_-_g.mp3 */; };
+		C0F3936F1A9EBDC6008B20B1 /* Morse_Code_-_h.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C0F393361A9EBDC6008B20B1 /* Morse_Code_-_h.mp3 */; };
+		C0F393701A9EBDC6008B20B1 /* Morse_Code_-_Hyphen,_Minus.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C0F393371A9EBDC6008B20B1 /* Morse_Code_-_Hyphen,_Minus.mp3 */; };
+		C0F393711A9EBDC6008B20B1 /* Morse_Code_-_i.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C0F393381A9EBDC6008B20B1 /* Morse_Code_-_i.mp3 */; };
+		C0F393721A9EBDC6008B20B1 /* Morse_Code_-_j.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C0F393391A9EBDC6008B20B1 /* Morse_Code_-_j.mp3 */; };
+		C0F393731A9EBDC6008B20B1 /* Morse_Code_-_k.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C0F3933A1A9EBDC6008B20B1 /* Morse_Code_-_k.mp3 */; };
+		C0F393741A9EBDC6008B20B1 /* Morse_Code_-_l.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C0F3933B1A9EBDC6008B20B1 /* Morse_Code_-_l.mp3 */; };
+		C0F393751A9EBDC6008B20B1 /* Morse_Code_-_m.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C0F3933C1A9EBDC6008B20B1 /* Morse_Code_-_m.mp3 */; };
+		C0F393761A9EBDC6008B20B1 /* Morse_Code_-_n.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C0F3933D1A9EBDC6008B20B1 /* Morse_Code_-_n.mp3 */; };
+		C0F393771A9EBDC6008B20B1 /* Morse_Code_-_o.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C0F3933E1A9EBDC6008B20B1 /* Morse_Code_-_o.mp3 */; };
+		C0F393781A9EBDC6008B20B1 /* Morse_Code_-_p.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C0F3933F1A9EBDC6008B20B1 /* Morse_Code_-_p.mp3 */; };
+		C0F393791A9EBDC6008B20B1 /* Morse_Code_-_Parenthesis_(Close).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C0F393401A9EBDC6008B20B1 /* Morse_Code_-_Parenthesis_(Close).mp3 */; };
+		C0F3937A1A9EBDC6008B20B1 /* Morse_Code_-_Parenthesis_(Open).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C0F393411A9EBDC6008B20B1 /* Morse_Code_-_Parenthesis_(Open).mp3 */; };
+		C0F3937B1A9EBDC6008B20B1 /* Morse_Code_-_Period.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C0F393421A9EBDC6008B20B1 /* Morse_Code_-_Period.mp3 */; };
+		C0F3937C1A9EBDC6008B20B1 /* Morse_Code_-_Plus.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C0F393431A9EBDC6008B20B1 /* Morse_Code_-_Plus.mp3 */; };
+		C0F3937D1A9EBDC6008B20B1 /* Morse_Code_-_q.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C0F393441A9EBDC6008B20B1 /* Morse_Code_-_q.mp3 */; };
+		C0F3937E1A9EBDC6008B20B1 /* Morse_Code_-_Question_Mark.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C0F393451A9EBDC6008B20B1 /* Morse_Code_-_Question_Mark.mp3 */; };
+		C0F3937F1A9EBDC6008B20B1 /* Morse_Code_-_Quotation_Mark.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C0F393461A9EBDC6008B20B1 /* Morse_Code_-_Quotation_Mark.mp3 */; };
+		C0F393801A9EBDC6008B20B1 /* Morse_Code_-_r.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C0F393471A9EBDC6008B20B1 /* Morse_Code_-_r.mp3 */; };
+		C0F393811A9EBDC6008B20B1 /* Morse_Code_-_s.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C0F393481A9EBDC6008B20B1 /* Morse_Code_-_s.mp3 */; };
+		C0F393821A9EBDC6008B20B1 /* Morse_Code_-_Semicolon.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C0F393491A9EBDC6008B20B1 /* Morse_Code_-_Semicolon.mp3 */; };
+		C0F393831A9EBDC6008B20B1 /* Morse_Code_-_Slash.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C0F3934A1A9EBDC6008B20B1 /* Morse_Code_-_Slash.mp3 */; };
+		C0F393841A9EBDC6008B20B1 /* Morse_Code_-_t.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C0F3934B1A9EBDC6008B20B1 /* Morse_Code_-_t.mp3 */; };
+		C0F393851A9EBDC6008B20B1 /* Morse_Code_-_u.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C0F3934C1A9EBDC6008B20B1 /* Morse_Code_-_u.mp3 */; };
+		C0F393861A9EBDC6008B20B1 /* Morse_Code_-_Underscore.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C0F3934D1A9EBDC6008B20B1 /* Morse_Code_-_Underscore.mp3 */; };
+		C0F393871A9EBDC6008B20B1 /* Morse_Code_-_v.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C0F3934E1A9EBDC6008B20B1 /* Morse_Code_-_v.mp3 */; };
+		C0F393881A9EBDC6008B20B1 /* Morse_Code_-_w.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C0F3934F1A9EBDC6008B20B1 /* Morse_Code_-_w.mp3 */; };
+		C0F393891A9EBDC6008B20B1 /* Morse_Code_-_x.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C0F393501A9EBDC6008B20B1 /* Morse_Code_-_x.mp3 */; };
+		C0F3938A1A9EBDC6008B20B1 /* Morse_Code_-_y.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C0F393511A9EBDC6008B20B1 /* Morse_Code_-_y.mp3 */; };
+		C0F3938B1A9EBDC6008B20B1 /* Morse_Code_-_z.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C0F393521A9EBDC6008B20B1 /* Morse_Code_-_z.mp3 */; };
+		C0F3938C1A9EC1E9008B20B1 /* MorseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0197CE11A9DCB4600762EDF /* MorseManager.swift */; };
+		C0F3938E1A9EC259008B20B1 /* CharArray.plist in Resources */ = {isa = PBXBuildFile; fileRef = C0F3938D1A9EC259008B20B1 /* CharArray.plist */; };
+		C0F3938F1A9EC392008B20B1 /* CharArray.plist in Resources */ = {isa = PBXBuildFile; fileRef = C0F3938D1A9EC259008B20B1 /* CharArray.plist */; };
+		C0F393901A9EC394008B20B1 /* CharToMorse.plist in Resources */ = {isa = PBXBuildFile; fileRef = C0F393191A9EBDC6008B20B1 /* CharToMorse.plist */; };
+		C0F393911A9EC396008B20B1 /* CharToSound.plist in Resources */ = {isa = PBXBuildFile; fileRef = C0F3931A1A9EBDC6008B20B1 /* CharToSound.plist */; };
+		C0F393921A9EC398008B20B1 /* MorseToChar.plist in Resources */ = {isa = PBXBuildFile; fileRef = C0F3931B1A9EBDC6008B20B1 /* MorseToChar.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,10 +142,65 @@
 		C0197CDD1A9DC7F000762EDF /* MorseListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MorseListCell.swift; sourceTree = "<group>"; };
 		C0197CDE1A9DC7F000762EDF /* MorseListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MorseListCell.xib; sourceTree = "<group>"; };
 		C0197CE11A9DCB4600762EDF /* MorseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MorseManager.swift; sourceTree = "<group>"; };
-		C093A6E21A9EB21500EC9EA2 /* CharToSound.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CharToSound.plist; sourceTree = "<group>"; };
 		C093A7511A9EB3D900EC9EA2 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		C0EA10E31A6397FE00087E3C /* CharToMorse.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CharToMorse.plist; sourceTree = "<group>"; };
-		C0EA10E71A63A66600087E3C /* MorseToChar.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MorseToChar.plist; sourceTree = "<group>"; };
+		C0F393191A9EBDC6008B20B1 /* CharToMorse.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CharToMorse.plist; sourceTree = "<group>"; };
+		C0F3931A1A9EBDC6008B20B1 /* CharToSound.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CharToSound.plist; sourceTree = "<group>"; };
+		C0F3931B1A9EBDC6008B20B1 /* MorseToChar.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MorseToChar.plist; sourceTree = "<group>"; };
+		C0F3931D1A9EBDC6008B20B1 /* Morse_Code_-_0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Morse_Code_-_0.mp3"; sourceTree = "<group>"; };
+		C0F3931E1A9EBDC6008B20B1 /* Morse_Code_-_1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Morse_Code_-_1.mp3"; sourceTree = "<group>"; };
+		C0F3931F1A9EBDC6008B20B1 /* Morse_Code_-_2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Morse_Code_-_2.mp3"; sourceTree = "<group>"; };
+		C0F393201A9EBDC6008B20B1 /* Morse_Code_-_3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Morse_Code_-_3.mp3"; sourceTree = "<group>"; };
+		C0F393211A9EBDC6008B20B1 /* Morse_Code_-_4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Morse_Code_-_4.mp3"; sourceTree = "<group>"; };
+		C0F393221A9EBDC6008B20B1 /* Morse_Code_-_5.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Morse_Code_-_5.mp3"; sourceTree = "<group>"; };
+		C0F393231A9EBDC6008B20B1 /* Morse_Code_-_6.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Morse_Code_-_6.mp3"; sourceTree = "<group>"; };
+		C0F393241A9EBDC6008B20B1 /* Morse_Code_-_7.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Morse_Code_-_7.mp3"; sourceTree = "<group>"; };
+		C0F393251A9EBDC6008B20B1 /* Morse_Code_-_8.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Morse_Code_-_8.mp3"; sourceTree = "<group>"; };
+		C0F393261A9EBDC6008B20B1 /* Morse_Code_-_9.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Morse_Code_-_9.mp3"; sourceTree = "<group>"; };
+		C0F393271A9EBDC6008B20B1 /* Morse_Code_-_a.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Morse_Code_-_a.mp3"; sourceTree = "<group>"; };
+		C0F393281A9EBDC6008B20B1 /* Morse_Code_-_Ampersand.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Morse_Code_-_Ampersand.mp3"; sourceTree = "<group>"; };
+		C0F393291A9EBDC6008B20B1 /* Morse_Code_-_Apostrope.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Morse_Code_-_Apostrope.mp3"; sourceTree = "<group>"; };
+		C0F3932A1A9EBDC6008B20B1 /* Morse_Code_-_At_(Commercial_At).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Morse_Code_-_At_(Commercial_At).mp3"; sourceTree = "<group>"; };
+		C0F3932B1A9EBDC6008B20B1 /* Morse_Code_-_b.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Morse_Code_-_b.mp3"; sourceTree = "<group>"; };
+		C0F3932C1A9EBDC6008B20B1 /* Morse_Code_-_c.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Morse_Code_-_c.mp3"; sourceTree = "<group>"; };
+		C0F3932D1A9EBDC6008B20B1 /* Morse_Code_-_Colon.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Morse_Code_-_Colon.mp3"; sourceTree = "<group>"; };
+		C0F3932E1A9EBDC6008B20B1 /* Morse_Code_-_Comma.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Morse_Code_-_Comma.mp3"; sourceTree = "<group>"; };
+		C0F3932F1A9EBDC6008B20B1 /* Morse_Code_-_d.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Morse_Code_-_d.mp3"; sourceTree = "<group>"; };
+		C0F393301A9EBDC6008B20B1 /* Morse_Code_-_Dollar_Sign.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Morse_Code_-_Dollar_Sign.mp3"; sourceTree = "<group>"; };
+		C0F393311A9EBDC6008B20B1 /* Morse_Code_-_e.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Morse_Code_-_e.mp3"; sourceTree = "<group>"; };
+		C0F393321A9EBDC6008B20B1 /* Morse_Code_-_Equals.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Morse_Code_-_Equals.mp3"; sourceTree = "<group>"; };
+		C0F393331A9EBDC6008B20B1 /* Morse_Code_-_Exclamation_Point.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Morse_Code_-_Exclamation_Point.mp3"; sourceTree = "<group>"; };
+		C0F393341A9EBDC6008B20B1 /* Morse_Code_-_f.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Morse_Code_-_f.mp3"; sourceTree = "<group>"; };
+		C0F393351A9EBDC6008B20B1 /* Morse_Code_-_g.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Morse_Code_-_g.mp3"; sourceTree = "<group>"; };
+		C0F393361A9EBDC6008B20B1 /* Morse_Code_-_h.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Morse_Code_-_h.mp3"; sourceTree = "<group>"; };
+		C0F393371A9EBDC6008B20B1 /* Morse_Code_-_Hyphen,_Minus.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Morse_Code_-_Hyphen,_Minus.mp3"; sourceTree = "<group>"; };
+		C0F393381A9EBDC6008B20B1 /* Morse_Code_-_i.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Morse_Code_-_i.mp3"; sourceTree = "<group>"; };
+		C0F393391A9EBDC6008B20B1 /* Morse_Code_-_j.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Morse_Code_-_j.mp3"; sourceTree = "<group>"; };
+		C0F3933A1A9EBDC6008B20B1 /* Morse_Code_-_k.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Morse_Code_-_k.mp3"; sourceTree = "<group>"; };
+		C0F3933B1A9EBDC6008B20B1 /* Morse_Code_-_l.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Morse_Code_-_l.mp3"; sourceTree = "<group>"; };
+		C0F3933C1A9EBDC6008B20B1 /* Morse_Code_-_m.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Morse_Code_-_m.mp3"; sourceTree = "<group>"; };
+		C0F3933D1A9EBDC6008B20B1 /* Morse_Code_-_n.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Morse_Code_-_n.mp3"; sourceTree = "<group>"; };
+		C0F3933E1A9EBDC6008B20B1 /* Morse_Code_-_o.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Morse_Code_-_o.mp3"; sourceTree = "<group>"; };
+		C0F3933F1A9EBDC6008B20B1 /* Morse_Code_-_p.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Morse_Code_-_p.mp3"; sourceTree = "<group>"; };
+		C0F393401A9EBDC6008B20B1 /* Morse_Code_-_Parenthesis_(Close).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Morse_Code_-_Parenthesis_(Close).mp3"; sourceTree = "<group>"; };
+		C0F393411A9EBDC6008B20B1 /* Morse_Code_-_Parenthesis_(Open).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Morse_Code_-_Parenthesis_(Open).mp3"; sourceTree = "<group>"; };
+		C0F393421A9EBDC6008B20B1 /* Morse_Code_-_Period.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Morse_Code_-_Period.mp3"; sourceTree = "<group>"; };
+		C0F393431A9EBDC6008B20B1 /* Morse_Code_-_Plus.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Morse_Code_-_Plus.mp3"; sourceTree = "<group>"; };
+		C0F393441A9EBDC6008B20B1 /* Morse_Code_-_q.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Morse_Code_-_q.mp3"; sourceTree = "<group>"; };
+		C0F393451A9EBDC6008B20B1 /* Morse_Code_-_Question_Mark.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Morse_Code_-_Question_Mark.mp3"; sourceTree = "<group>"; };
+		C0F393461A9EBDC6008B20B1 /* Morse_Code_-_Quotation_Mark.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Morse_Code_-_Quotation_Mark.mp3"; sourceTree = "<group>"; };
+		C0F393471A9EBDC6008B20B1 /* Morse_Code_-_r.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Morse_Code_-_r.mp3"; sourceTree = "<group>"; };
+		C0F393481A9EBDC6008B20B1 /* Morse_Code_-_s.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Morse_Code_-_s.mp3"; sourceTree = "<group>"; };
+		C0F393491A9EBDC6008B20B1 /* Morse_Code_-_Semicolon.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Morse_Code_-_Semicolon.mp3"; sourceTree = "<group>"; };
+		C0F3934A1A9EBDC6008B20B1 /* Morse_Code_-_Slash.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Morse_Code_-_Slash.mp3"; sourceTree = "<group>"; };
+		C0F3934B1A9EBDC6008B20B1 /* Morse_Code_-_t.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Morse_Code_-_t.mp3"; sourceTree = "<group>"; };
+		C0F3934C1A9EBDC6008B20B1 /* Morse_Code_-_u.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Morse_Code_-_u.mp3"; sourceTree = "<group>"; };
+		C0F3934D1A9EBDC6008B20B1 /* Morse_Code_-_Underscore.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Morse_Code_-_Underscore.mp3"; sourceTree = "<group>"; };
+		C0F3934E1A9EBDC6008B20B1 /* Morse_Code_-_v.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Morse_Code_-_v.mp3"; sourceTree = "<group>"; };
+		C0F3934F1A9EBDC6008B20B1 /* Morse_Code_-_w.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Morse_Code_-_w.mp3"; sourceTree = "<group>"; };
+		C0F393501A9EBDC6008B20B1 /* Morse_Code_-_x.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Morse_Code_-_x.mp3"; sourceTree = "<group>"; };
+		C0F393511A9EBDC6008B20B1 /* Morse_Code_-_y.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Morse_Code_-_y.mp3"; sourceTree = "<group>"; };
+		C0F393521A9EBDC6008B20B1 /* Morse_Code_-_z.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Morse_Code_-_z.mp3"; sourceTree = "<group>"; };
+		C0F3938D1A9EC259008B20B1 /* CharArray.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CharArray.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,8 +232,8 @@
 		8232C98B1A6285FA00D48351 = {
 			isa = PBXGroup;
 			children = (
+				C0F393171A9EBDC6008B20B1 /* Resources */,
 				C093A7531A9EB3E500EC9EA2 /* Frameworks */,
-				C0EA10E01A6392FE00087E3C /* Resources */,
 				8232C9961A6285FA00D48351 /* MorseKeyboard */,
 				8232C9AC1A6285FA00D48351 /* MorseKeyboardTests */,
 				8232C9BE1A628A3100D48351 /* Keyboard */,
@@ -215,22 +328,85 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		C0EA10E01A6392FE00087E3C /* Resources */ = {
+		C0F393171A9EBDC6008B20B1 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				C0EA10E11A6392FE00087E3C /* Data */,
+				C0F393181A9EBDC6008B20B1 /* Data */,
+				C0F3931C1A9EBDC6008B20B1 /* Sound */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		C0EA10E11A6392FE00087E3C /* Data */ = {
+		C0F393181A9EBDC6008B20B1 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				C093A6E21A9EB21500EC9EA2 /* CharToSound.plist */,
-				C0EA10E31A6397FE00087E3C /* CharToMorse.plist */,
-				C0EA10E71A63A66600087E3C /* MorseToChar.plist */,
+				C0F3938D1A9EC259008B20B1 /* CharArray.plist */,
+				C0F393191A9EBDC6008B20B1 /* CharToMorse.plist */,
+				C0F3931A1A9EBDC6008B20B1 /* CharToSound.plist */,
+				C0F3931B1A9EBDC6008B20B1 /* MorseToChar.plist */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		C0F3931C1A9EBDC6008B20B1 /* Sound */ = {
+			isa = PBXGroup;
+			children = (
+				C0F3931D1A9EBDC6008B20B1 /* Morse_Code_-_0.mp3 */,
+				C0F3931E1A9EBDC6008B20B1 /* Morse_Code_-_1.mp3 */,
+				C0F3931F1A9EBDC6008B20B1 /* Morse_Code_-_2.mp3 */,
+				C0F393201A9EBDC6008B20B1 /* Morse_Code_-_3.mp3 */,
+				C0F393211A9EBDC6008B20B1 /* Morse_Code_-_4.mp3 */,
+				C0F393221A9EBDC6008B20B1 /* Morse_Code_-_5.mp3 */,
+				C0F393231A9EBDC6008B20B1 /* Morse_Code_-_6.mp3 */,
+				C0F393241A9EBDC6008B20B1 /* Morse_Code_-_7.mp3 */,
+				C0F393251A9EBDC6008B20B1 /* Morse_Code_-_8.mp3 */,
+				C0F393261A9EBDC6008B20B1 /* Morse_Code_-_9.mp3 */,
+				C0F393271A9EBDC6008B20B1 /* Morse_Code_-_a.mp3 */,
+				C0F393281A9EBDC6008B20B1 /* Morse_Code_-_Ampersand.mp3 */,
+				C0F393291A9EBDC6008B20B1 /* Morse_Code_-_Apostrope.mp3 */,
+				C0F3932A1A9EBDC6008B20B1 /* Morse_Code_-_At_(Commercial_At).mp3 */,
+				C0F3932B1A9EBDC6008B20B1 /* Morse_Code_-_b.mp3 */,
+				C0F3932C1A9EBDC6008B20B1 /* Morse_Code_-_c.mp3 */,
+				C0F3932D1A9EBDC6008B20B1 /* Morse_Code_-_Colon.mp3 */,
+				C0F3932E1A9EBDC6008B20B1 /* Morse_Code_-_Comma.mp3 */,
+				C0F3932F1A9EBDC6008B20B1 /* Morse_Code_-_d.mp3 */,
+				C0F393301A9EBDC6008B20B1 /* Morse_Code_-_Dollar_Sign.mp3 */,
+				C0F393311A9EBDC6008B20B1 /* Morse_Code_-_e.mp3 */,
+				C0F393321A9EBDC6008B20B1 /* Morse_Code_-_Equals.mp3 */,
+				C0F393331A9EBDC6008B20B1 /* Morse_Code_-_Exclamation_Point.mp3 */,
+				C0F393341A9EBDC6008B20B1 /* Morse_Code_-_f.mp3 */,
+				C0F393351A9EBDC6008B20B1 /* Morse_Code_-_g.mp3 */,
+				C0F393361A9EBDC6008B20B1 /* Morse_Code_-_h.mp3 */,
+				C0F393371A9EBDC6008B20B1 /* Morse_Code_-_Hyphen,_Minus.mp3 */,
+				C0F393381A9EBDC6008B20B1 /* Morse_Code_-_i.mp3 */,
+				C0F393391A9EBDC6008B20B1 /* Morse_Code_-_j.mp3 */,
+				C0F3933A1A9EBDC6008B20B1 /* Morse_Code_-_k.mp3 */,
+				C0F3933B1A9EBDC6008B20B1 /* Morse_Code_-_l.mp3 */,
+				C0F3933C1A9EBDC6008B20B1 /* Morse_Code_-_m.mp3 */,
+				C0F3933D1A9EBDC6008B20B1 /* Morse_Code_-_n.mp3 */,
+				C0F3933E1A9EBDC6008B20B1 /* Morse_Code_-_o.mp3 */,
+				C0F3933F1A9EBDC6008B20B1 /* Morse_Code_-_p.mp3 */,
+				C0F393401A9EBDC6008B20B1 /* Morse_Code_-_Parenthesis_(Close).mp3 */,
+				C0F393411A9EBDC6008B20B1 /* Morse_Code_-_Parenthesis_(Open).mp3 */,
+				C0F393421A9EBDC6008B20B1 /* Morse_Code_-_Period.mp3 */,
+				C0F393431A9EBDC6008B20B1 /* Morse_Code_-_Plus.mp3 */,
+				C0F393441A9EBDC6008B20B1 /* Morse_Code_-_q.mp3 */,
+				C0F393451A9EBDC6008B20B1 /* Morse_Code_-_Question_Mark.mp3 */,
+				C0F393461A9EBDC6008B20B1 /* Morse_Code_-_Quotation_Mark.mp3 */,
+				C0F393471A9EBDC6008B20B1 /* Morse_Code_-_r.mp3 */,
+				C0F393481A9EBDC6008B20B1 /* Morse_Code_-_s.mp3 */,
+				C0F393491A9EBDC6008B20B1 /* Morse_Code_-_Semicolon.mp3 */,
+				C0F3934A1A9EBDC6008B20B1 /* Morse_Code_-_Slash.mp3 */,
+				C0F3934B1A9EBDC6008B20B1 /* Morse_Code_-_t.mp3 */,
+				C0F3934C1A9EBDC6008B20B1 /* Morse_Code_-_u.mp3 */,
+				C0F3934D1A9EBDC6008B20B1 /* Morse_Code_-_Underscore.mp3 */,
+				C0F3934E1A9EBDC6008B20B1 /* Morse_Code_-_v.mp3 */,
+				C0F3934F1A9EBDC6008B20B1 /* Morse_Code_-_w.mp3 */,
+				C0F393501A9EBDC6008B20B1 /* Morse_Code_-_x.mp3 */,
+				C0F393511A9EBDC6008B20B1 /* Morse_Code_-_y.mp3 */,
+				C0F393521A9EBDC6008B20B1 /* Morse_Code_-_z.mp3 */,
+			);
+			path = Sound;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -336,13 +512,68 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0F3938E1A9EC259008B20B1 /* CharArray.plist in Resources */,
+				C0F393531A9EBDC6008B20B1 /* CharToMorse.plist in Resources */,
+				C0F393741A9EBDC6008B20B1 /* Morse_Code_-_l.mp3 in Resources */,
+				C0F3938A1A9EBDC6008B20B1 /* Morse_Code_-_y.mp3 in Resources */,
 				8232C99F1A6285FA00D48351 /* Main.storyboard in Resources */,
-				C0EA10E81A63A66600087E3C /* MorseToChar.plist in Resources */,
+				C0F393781A9EBDC6008B20B1 /* Morse_Code_-_p.mp3 in Resources */,
+				C0F393571A9EBDC6008B20B1 /* Morse_Code_-_1.mp3 in Resources */,
+				C0F393721A9EBDC6008B20B1 /* Morse_Code_-_j.mp3 in Resources */,
+				C0F393831A9EBDC6008B20B1 /* Morse_Code_-_Slash.mp3 in Resources */,
+				C0F3935C1A9EBDC6008B20B1 /* Morse_Code_-_6.mp3 in Resources */,
+				C0F393801A9EBDC6008B20B1 /* Morse_Code_-_r.mp3 in Resources */,
+				C0F3936E1A9EBDC6008B20B1 /* Morse_Code_-_g.mp3 in Resources */,
 				C0197CE01A9DC7F000762EDF /* MorseListCell.xib in Resources */,
+				C0F393691A9EBDC6008B20B1 /* Morse_Code_-_Dollar_Sign.mp3 in Resources */,
+				C0F393891A9EBDC6008B20B1 /* Morse_Code_-_x.mp3 in Resources */,
+				C0F393771A9EBDC6008B20B1 /* Morse_Code_-_o.mp3 in Resources */,
+				C0F3936A1A9EBDC6008B20B1 /* Morse_Code_-_e.mp3 in Resources */,
+				C0F3935E1A9EBDC6008B20B1 /* Morse_Code_-_8.mp3 in Resources */,
+				C0F3935D1A9EBDC6008B20B1 /* Morse_Code_-_7.mp3 in Resources */,
+				C0F393751A9EBDC6008B20B1 /* Morse_Code_-_m.mp3 in Resources */,
+				C0F393731A9EBDC6008B20B1 /* Morse_Code_-_k.mp3 in Resources */,
+				C0F393711A9EBDC6008B20B1 /* Morse_Code_-_i.mp3 in Resources */,
+				C0F393551A9EBDC6008B20B1 /* MorseToChar.plist in Resources */,
+				C0F3937A1A9EBDC6008B20B1 /* Morse_Code_-_Parenthesis_(Open).mp3 in Resources */,
+				C0F3935A1A9EBDC6008B20B1 /* Morse_Code_-_4.mp3 in Resources */,
+				C0F3935B1A9EBDC6008B20B1 /* Morse_Code_-_5.mp3 in Resources */,
+				C0F393871A9EBDC6008B20B1 /* Morse_Code_-_v.mp3 in Resources */,
+				C0F393821A9EBDC6008B20B1 /* Morse_Code_-_Semicolon.mp3 in Resources */,
+				C0F3936D1A9EBDC6008B20B1 /* Morse_Code_-_f.mp3 in Resources */,
+				C0F393621A9EBDC6008B20B1 /* Morse_Code_-_Apostrope.mp3 in Resources */,
+				C0F3937E1A9EBDC6008B20B1 /* Morse_Code_-_Question_Mark.mp3 in Resources */,
+				C0F3936F1A9EBDC6008B20B1 /* Morse_Code_-_h.mp3 in Resources */,
+				C0F3937C1A9EBDC6008B20B1 /* Morse_Code_-_Plus.mp3 in Resources */,
+				C0F393811A9EBDC6008B20B1 /* Morse_Code_-_s.mp3 in Resources */,
+				C0F393641A9EBDC6008B20B1 /* Morse_Code_-_b.mp3 in Resources */,
+				C0F393601A9EBDC6008B20B1 /* Morse_Code_-_a.mp3 in Resources */,
+				C0F393651A9EBDC6008B20B1 /* Morse_Code_-_c.mp3 in Resources */,
+				C0F393581A9EBDC6008B20B1 /* Morse_Code_-_2.mp3 in Resources */,
+				C0F3936C1A9EBDC6008B20B1 /* Morse_Code_-_Exclamation_Point.mp3 in Resources */,
+				C0F393851A9EBDC6008B20B1 /* Morse_Code_-_u.mp3 in Resources */,
+				C0F393631A9EBDC6008B20B1 /* Morse_Code_-_At_(Commercial_At).mp3 in Resources */,
 				8232C9A41A6285FA00D48351 /* LaunchScreen.xib in Resources */,
+				C0F393561A9EBDC6008B20B1 /* Morse_Code_-_0.mp3 in Resources */,
+				C0F393701A9EBDC6008B20B1 /* Morse_Code_-_Hyphen,_Minus.mp3 in Resources */,
 				8232C9A11A6285FA00D48351 /* Images.xcassets in Resources */,
-				C093A6E31A9EB21500EC9EA2 /* CharToSound.plist in Resources */,
-				C0EA10E41A6397FE00087E3C /* CharToMorse.plist in Resources */,
+				C0F393881A9EBDC6008B20B1 /* Morse_Code_-_w.mp3 in Resources */,
+				C0F3935F1A9EBDC6008B20B1 /* Morse_Code_-_9.mp3 in Resources */,
+				C0F3937F1A9EBDC6008B20B1 /* Morse_Code_-_Quotation_Mark.mp3 in Resources */,
+				C0F3938B1A9EBDC6008B20B1 /* Morse_Code_-_z.mp3 in Resources */,
+				C0F3937D1A9EBDC6008B20B1 /* Morse_Code_-_q.mp3 in Resources */,
+				C0F393661A9EBDC6008B20B1 /* Morse_Code_-_Colon.mp3 in Resources */,
+				C0F393611A9EBDC6008B20B1 /* Morse_Code_-_Ampersand.mp3 in Resources */,
+				C0F393671A9EBDC6008B20B1 /* Morse_Code_-_Comma.mp3 in Resources */,
+				C0F393761A9EBDC6008B20B1 /* Morse_Code_-_n.mp3 in Resources */,
+				C0F393861A9EBDC6008B20B1 /* Morse_Code_-_Underscore.mp3 in Resources */,
+				C0F393681A9EBDC6008B20B1 /* Morse_Code_-_d.mp3 in Resources */,
+				C0F3936B1A9EBDC6008B20B1 /* Morse_Code_-_Equals.mp3 in Resources */,
+				C0F393791A9EBDC6008B20B1 /* Morse_Code_-_Parenthesis_(Close).mp3 in Resources */,
+				C0F393541A9EBDC6008B20B1 /* CharToSound.plist in Resources */,
+				C0F393591A9EBDC6008B20B1 /* Morse_Code_-_3.mp3 in Resources */,
+				C0F3937B1A9EBDC6008B20B1 /* Morse_Code_-_Period.mp3 in Resources */,
+				C0F393841A9EBDC6008B20B1 /* Morse_Code_-_t.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -357,9 +588,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C0EA10E91A63A66600087E3C /* MorseToChar.plist in Resources */,
+				C0F393901A9EC394008B20B1 /* CharToMorse.plist in Resources */,
+				C0F393921A9EC398008B20B1 /* MorseToChar.plist in Resources */,
+				C0F393911A9EC396008B20B1 /* CharToSound.plist in Resources */,
+				C0F3938F1A9EC392008B20B1 /* CharArray.plist in Resources */,
 				C0197CA51A9D9D6900762EDF /* Images.xcassets in Resources */,
-				C0EA10E51A6397FE00087E3C /* CharToMorse.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -395,6 +628,7 @@
 			files = (
 				8266910A1A6EB25600C24FF8 /* MCImageExtension.swift in Sources */,
 				82F82A301A714F1700F15D57 /* MCStringExtension.swift in Sources */,
+				C0F3938C1A9EC1E9008B20B1 /* MorseManager.swift in Sources */,
 				8232C9C21A628A3100D48351 /* KeyboardViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
