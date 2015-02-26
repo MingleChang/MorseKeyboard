@@ -25,4 +25,8 @@ class MorseListCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func setLetter(letter:String,andMorse morse:String){
+        self.letterLabel.text=letter
+        self.morseLabel.text=morse
+    }
 }

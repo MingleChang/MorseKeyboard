@@ -233,10 +233,10 @@
 			isa = PBXGroup;
 			children = (
 				C0F393171A9EBDC6008B20B1 /* Resources */,
-				C093A7531A9EB3E500EC9EA2 /* Frameworks */,
 				8232C9961A6285FA00D48351 /* MorseKeyboard */,
 				8232C9AC1A6285FA00D48351 /* MorseKeyboardTests */,
 				8232C9BE1A628A3100D48351 /* Keyboard */,
+				C093A7531A9EB3E500EC9EA2 /* Frameworks */,
 				8232C9951A6285FA00D48351 /* Products */,
 			);
 			sourceTree = "<group>";
