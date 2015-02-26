@@ -24,6 +24,8 @@
 		C0197CDF1A9DC7F000762EDF /* MorseListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0197CDD1A9DC7F000762EDF /* MorseListCell.swift */; };
 		C0197CE01A9DC7F000762EDF /* MorseListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0197CDE1A9DC7F000762EDF /* MorseListCell.xib */; };
 		C0197CE21A9DCB4600762EDF /* MorseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0197CE11A9DCB4600762EDF /* MorseManager.swift */; };
+		C093A6E31A9EB21500EC9EA2 /* CharToSound.plist in Resources */ = {isa = PBXBuildFile; fileRef = C093A6E21A9EB21500EC9EA2 /* CharToSound.plist */; };
+		C093A7521A9EB3D900EC9EA2 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C093A7511A9EB3D900EC9EA2 /* AVFoundation.framework */; };
 		C0EA10E41A6397FE00087E3C /* CharToMorse.plist in Resources */ = {isa = PBXBuildFile; fileRef = C0EA10E31A6397FE00087E3C /* CharToMorse.plist */; };
 		C0EA10E51A6397FE00087E3C /* CharToMorse.plist in Resources */ = {isa = PBXBuildFile; fileRef = C0EA10E31A6397FE00087E3C /* CharToMorse.plist */; };
 		C0EA10E81A63A66600087E3C /* MorseToChar.plist in Resources */ = {isa = PBXBuildFile; fileRef = C0EA10E71A63A66600087E3C /* MorseToChar.plist */; };
@@ -82,6 +84,8 @@
 		C0197CDD1A9DC7F000762EDF /* MorseListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MorseListCell.swift; sourceTree = "<group>"; };
 		C0197CDE1A9DC7F000762EDF /* MorseListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MorseListCell.xib; sourceTree = "<group>"; };
 		C0197CE11A9DCB4600762EDF /* MorseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MorseManager.swift; sourceTree = "<group>"; };
+		C093A6E21A9EB21500EC9EA2 /* CharToSound.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CharToSound.plist; sourceTree = "<group>"; };
+		C093A7511A9EB3D900EC9EA2 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		C0EA10E31A6397FE00087E3C /* CharToMorse.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CharToMorse.plist; sourceTree = "<group>"; };
 		C0EA10E71A63A66600087E3C /* MorseToChar.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MorseToChar.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -91,6 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C093A7521A9EB3D900EC9EA2 /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,6 +119,7 @@
 		8232C98B1A6285FA00D48351 = {
 			isa = PBXGroup;
 			children = (
+				C093A7531A9EB3E500EC9EA2 /* Frameworks */,
 				C0EA10E01A6392FE00087E3C /* Resources */,
 				8232C9961A6285FA00D48351 /* MorseKeyboard */,
 				8232C9AC1A6285FA00D48351 /* MorseKeyboardTests */,
@@ -201,6 +207,14 @@
 			path = MingleChang;
 			sourceTree = "<group>";
 		};
+		C093A7531A9EB3E500EC9EA2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C093A7511A9EB3D900EC9EA2 /* AVFoundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		C0EA10E01A6392FE00087E3C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -212,6 +226,7 @@
 		C0EA10E11A6392FE00087E3C /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				C093A6E21A9EB21500EC9EA2 /* CharToSound.plist */,
 				C0EA10E31A6397FE00087E3C /* CharToMorse.plist */,
 				C0EA10E71A63A66600087E3C /* MorseToChar.plist */,
 			);
@@ -326,6 +341,7 @@
 				C0197CE01A9DC7F000762EDF /* MorseListCell.xib in Resources */,
 				8232C9A41A6285FA00D48351 /* LaunchScreen.xib in Resources */,
 				8232C9A11A6285FA00D48351 /* Images.xcassets in Resources */,
+				C093A6E31A9EB21500EC9EA2 /* CharToSound.plist in Resources */,
 				C0EA10E41A6397FE00087E3C /* CharToMorse.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
