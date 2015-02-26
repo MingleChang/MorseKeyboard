@@ -7,13 +7,18 @@
         <!--Navigation Controller-->
         <scene sceneID="DW9-6O-rOO">
             <objects>
-                <navigationController id="lL5-MR-tZH" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="MainNavigation" id="lL5-MR-tZH" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="XNX-3D-Wz0">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="v1t-hn-4ZV"/>
+                        <segue destination="kG9-NC-IKd" kind="relationship" relationship="rootViewController" id="dbT-Wa-Xzv"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z6Q-DF-YAz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -23,7 +28,7 @@
         <!--Morse-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MorseKeyboard" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="VC" id="BYZ-38-t0r" customClass="ViewController" customModule="MorseKeyboard" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -34,12 +39,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Morse" id="vcs-Ro-a06"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-362" y="335"/>
         </scene>
-        <!--Morse List View Controller-->
+        <!--Morse-->
         <scene sceneID="qXO-lL-RKw">
             <objects>
                 <viewController storyboardIdentifier="MorseListVC" id="kG9-NC-IKd" customClass="MorseListViewController" customModule="MorseKeyboard" customModuleProvider="target" sceneMemberID="viewController">
@@ -48,7 +54,7 @@
                         <viewControllerLayoutGuide type="bottom" id="hb8-dY-eJS"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="3D5-ea-rwj">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="KbG-h9-xwm">
@@ -94,14 +100,11 @@
                                                 <constraint firstItem="dQI-G4-zFq" firstAttribute="leading" secondItem="07Q-Be-63f" secondAttribute="leading" constant="10" id="IRJ-1b-p5p"/>
                                                 <constraint firstItem="kKa-4Q-7yo" firstAttribute="top" secondItem="07Q-Be-63f" secondAttribute="top" id="KfC-Iz-POe"/>
                                                 <constraint firstItem="kKa-4Q-7yo" firstAttribute="leading" secondItem="6fh-SN-5aW" secondAttribute="trailing" constant="5" id="OWO-CT-fR9"/>
-                                                <constraint firstAttribute="centerY" secondItem="6fh-SN-5aW" secondAttribute="centerY" id="Oz7-Al-HQJ"/>
-                                                <constraint firstAttribute="centerY" secondItem="dQI-G4-zFq" secondAttribute="centerY" id="XNr-lA-SIJ"/>
                                                 <constraint firstAttribute="trailing" secondItem="kKa-4Q-7yo" secondAttribute="trailing" id="Zgi-r5-Mnc"/>
                                                 <constraint firstItem="6fh-SN-5aW" firstAttribute="top" secondItem="07Q-Be-63f" secondAttribute="top" id="cI6-dN-23O"/>
                                                 <constraint firstAttribute="bottom" secondItem="dQI-G4-zFq" secondAttribute="bottom" id="dQF-J3-dm8"/>
                                                 <constraint firstItem="dQI-G4-zFq" firstAttribute="top" secondItem="07Q-Be-63f" secondAttribute="top" id="f61-HY-Msi"/>
                                                 <constraint firstAttribute="bottom" secondItem="kKa-4Q-7yo" secondAttribute="bottom" id="gUz-VG-Jjd"/>
-                                                <constraint firstAttribute="centerY" secondItem="kKa-4Q-7yo" secondAttribute="centerY" id="lbt-na-py2"/>
                                                 <constraint firstItem="NJC-pf-DfH" firstAttribute="leading" secondItem="07Q-Be-63f" secondAttribute="leading" constant="10" id="zci-sM-UbW"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -126,7 +129,8 @@
                             <constraint firstAttribute="trailing" secondItem="KbG-h9-xwm" secondAttribute="trailing" id="sMf-8Z-Hgt"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Pd4-TQ-ijC"/>
+                    <navigationItem key="navigationItem" title="Morse" id="Pd4-TQ-ijC"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="KbG-h9-xwm" id="cJ1-lZ-JiB"/>
                     </connections>

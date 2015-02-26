@@ -14,8 +14,8 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A/a" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xrm-mn-cBa">
-                        <rect key="frame" x="0.0" y="0.0" width="27" height="43"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <rect key="frame" x="10" y="0.0" width="38" height="43"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -43,10 +43,9 @@
                     <constraint firstAttribute="bottom" secondItem="Xrm-mn-cBa" secondAttribute="bottom" id="4Y2-Tk-dL6"/>
                     <constraint firstItem="ePQ-jT-abd" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="6VV-NN-zzq"/>
                     <constraint firstAttribute="bottom" secondItem="60X-YL-HNh" secondAttribute="bottom" id="IqP-UJ-fdu"/>
-                    <constraint firstAttribute="centerY" secondItem="Xrm-mn-cBa" secondAttribute="centerY" id="Mjc-z9-fBl"/>
                     <constraint firstAttribute="trailing" secondItem="o0g-ji-lTh" secondAttribute="trailing" id="Zdw-o0-M7P"/>
                     <constraint firstAttribute="centerY" secondItem="o0g-ji-lTh" secondAttribute="centerY" id="b2m-ab-MjS"/>
-                    <constraint firstItem="Xrm-mn-cBa" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="cZY-XW-UkN"/>
+                    <constraint firstItem="Xrm-mn-cBa" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="cZY-XW-UkN"/>
                     <constraint firstItem="Xrm-mn-cBa" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="fAF-og-RHm"/>
                     <constraint firstAttribute="bottom" secondItem="ePQ-jT-abd" secondAttribute="bottom" id="hwY-Nw-hcb"/>
                     <constraint firstAttribute="bottom" secondItem="o0g-ji-lTh" secondAttribute="bottom" id="qeI-tr-uOy"/>
