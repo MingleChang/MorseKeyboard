@@ -119,7 +119,7 @@ extension UIImage{
         let area:CGRect = CGRectMake(0, 0, self.size.width, self.size.height)
         CGContextScaleCTM(ctx, 1, -1)
         CGContextTranslateCTM(ctx, 0, -area.size.height)
-        let maskRef:CGImageRef = mask.CGImage
+        let maskRef:CGImageRef = mask.CGImage!
         let maskImage:CGImageRef = CGImageMaskCreate(CGImageGetWidth(maskRef),CGImageGetHeight(maskRef),CGImageGetBitsPerComponent(maskRef),CGImageGetBitsPerPixel(maskRef),CGImageGetBytesPerRow(maskRef),CGImageGetDataProvider(maskRef), nil, false)
         let masked:CGImageRef = CGImageCreateWithMask(self.CGImage, maskImage)
         CGContextDrawImage(ctx, area, masked)
@@ -155,11 +155,11 @@ extension UIImage{
     }
 }
 //MARK:高斯模糊效果
-extension UIImage{
-    func applyBlurWithRadius(blurRadius:CGFloat,withTintColor tintColor:UIColor,withSaturationDeltaFactor saturationDeltaFactor:CGFloat,withMaskImage maskImage:UIImage?)->UIImage{
-        let imageRect:CGRect = CGRectMake(0, 0, self.size.width, self.size.height)
-        
-        
-        return UIImage();
-    }
-}
+//extension UIImage{
+//    func applyBlurWithRadius(blurRadius:CGFloat,withTintColor tintColor:UIColor,withSaturationDeltaFactor saturationDeltaFactor:CGFloat,withMaskImage maskImage:UIImage?)->UIImage{
+//        let imageRect:CGRect = CGRectMake(0, 0, self.size.width, self.size.height)
+//        
+//        
+//        return UIImage();
+//    }
+//}

@@ -31,13 +31,18 @@ class MorseListViewController: UIViewController,UITableViewDataSource,UITableVie
     //MARK:
     func playSoundWithIndexPath(indexPath:NSIndexPath){
         let row=indexPath.row
-        let letter=MorseManager.sharedInstance().CharArray[row] as String
-        let fileName=MorseManager.sharedInstance().CharToSoundDic[letter] as String
+        let letter=MorseManager.sharedInstance().CharArray[row] as! String
+        let fileName=MorseManager.sharedInstance().CharToSoundDic[letter] as! String
         let lString=NSBundle.mainBundle().pathForResource(fileName, ofType: "mp3")
         let lURL=NSURL(string: lString!)
-        lPlayer=AVAudioPlayer(contentsOfURL: lURL, error: nil)
-        lPlayer.prepareToPlay()
-        lPlayer.play()
+        do{
+            try
+            lPlayer=AVAudioPlayer(contentsOfURL: lURL!, fileTypeHint: nil)
+            lPlayer.prepareToPlay()
+            lPlayer.play()
+        }catch{
+            
+        }
     }
 
     /*
@@ -58,11 +63,11 @@ class MorseListViewController: UIViewController,UITableViewDataSource,UITableVie
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var lCell=tableView.dequeueReusableCellWithIdentifier(MorseCellID, forIndexPath: indexPath) as MorseListCell
+        let lCell=tableView.dequeueReusableCellWithIdentifier(MorseCellID, forIndexPath: indexPath) as! MorseListCell
         
         let row=indexPath.row
-        let letter=MorseManager.sharedInstance().CharArray[row] as String
-        let morse=MorseManager.sharedInstance().CharToMorseDic[letter] as String
+        let letter:String=MorseManager.sharedInstance().CharArray[row] as! String
+        let morse=MorseManager.sharedInstance().CharToMorseDic[letter] as! String
         
         lCell.setLetter(letter, andMorse: morse)
         
